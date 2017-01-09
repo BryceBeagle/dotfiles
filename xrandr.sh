@@ -23,7 +23,7 @@ function DeactivateMonitors {
     MONITOR=eDP1
 }
 
-# functions to check if VGA is connected and in use
+# functions to check if monitors are connected and in use
 function MonitorsActive {
     [ $MONITOR = "DP2-1-2" ]
 }
