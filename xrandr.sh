@@ -2,14 +2,10 @@
 
 # Source: http://unix.stackexchange.com/a/11891
 
-# setting up new mode for my VGA
-#xrandr --newmode "1920x1080" 148.5 1920 2008 2052 2200 1080 1089 1095 1125 +hsync +vsync
-#xrandr --addmode VGA1 1920x1080
-
-# default monitor is eDP-1
+# default monitor is eDP1
 MONITOR=eDP1
 
-# functions to switch from LVDS1 to VGA and vice versa
+# functions to activate external monitors and vice versa
 function ActivateMonitors {
     echo "Connecting Monitors"
     xrandr --output eDP1 --off
