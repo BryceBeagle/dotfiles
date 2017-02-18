@@ -1,0 +1,13 @@
+Make cinnamon applications only show icon:
+    http://askubuntu.com/questions/436612/how-to-widen-window-list-item-boxes-in-cinnamon-gnome-desktop-to-fit
+    
+    Change
+        alloc.natural_size = 150 * global.ui_scale;
+    to
+        alloc.natural_size = alloc.min_size;
+
+
+Connect to ASU wifi
+    http://askubuntu.com/questions/279762/how-to-connect-to-wpa2-peap-mschapv2-enterprise-wifi-networks-that-dont-use-a-c
+
+Symlink .desktop files to /usr/share/applications

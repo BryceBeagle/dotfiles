@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Eagle
+Exec=/opt/eagle/eagle
+Icon=/opt/eagle/eagleicon50.png
+

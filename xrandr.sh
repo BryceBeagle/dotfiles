@@ -19,7 +19,7 @@ function DeactivateMonitors {
     xrandr --output DP2-1-2 --off
     xrandr --output DP2-2 --off
     xrandr --output DP2-1-1 --off
-    --output eDP1 --auto
+    xrandr --output eDP1 --auto
     MONITOR=eDP1
 }
 
