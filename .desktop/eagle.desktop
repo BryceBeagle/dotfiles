@@ -2,5 +2,5 @@
 Type=Application
 Name=Eagle
 Exec=/opt/eagle/eagle
-Icon=/opt/eagle/eagleicon50.png
+Icon=/opt/eagle/bin/eagleicon50.png
 
