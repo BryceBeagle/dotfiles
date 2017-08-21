@@ -29,19 +29,14 @@ extract() {
     spacu *.tar.xz
 }
 
-PS1='[\u@\h \W]\$ '
-
-# export PS1="\[\033[38;5;82m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;214m\]\w\[$(tput sgr0)\]\[\033[38;5;7m\]:\[$(tput sgr0)\]"
-
-# export PS1="┌─[\h][\[$(tput sgr0)\]\[\033[38;5;33m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]]\n└──\[$(tput sgr0)\]\[\033[38;5;4m\]▪ \[$(tput sgr0)\]"
-
-export PS1="┌─[\h][\[$(tput sgr0)\]\[\033[38;5;82m\]\w\[$(tput sgr0)\]\[\033[38;5;7m\]]\n└──\[$(tput sgr0)\]\[\033[38;5;82m\]▪ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;251m\]┌─[\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;208m\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;251m\]][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;39m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;251m\]]\n└──\[$(tput sgr0)\]\[\033[38;5;208m\]▪ \[$(tput sgr0)\]"
 
 # Powerline
 if [ -f /usr/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh ]; then
     source /usr/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
-export EDITOR='emacs -nw'
+export EDITOR='nvim'
 
-export PATH=/tmp/pkgbuild-0/bcompare/src/install/bin:$PATH
+# export PATH=/tmp/pkgbuild-0/bcompare/src/install/bin:$PATH
+export PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
