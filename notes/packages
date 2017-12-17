@@ -4,11 +4,10 @@ IDEs
 
 Steam
     steam
-    lib32-openal
-    lib32-libvdpau
-    lib32-libva
-    libcanberra
-    ?? lib32-gnome-themes-standard [AUR]
+    steam-native-runtime
+    lib32-gtk-engines [AUR]
+    lib32-gtk-engine-murrine [AUR]
+    lib32-gnome-themes-standard [AUR]
 
 DE
     budgie-desktop
