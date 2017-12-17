@@ -1,0 +1,25 @@
+IDEs
+    pycharm-professional [AUR]
+
+
+Steam
+    steam
+    lib32-openal
+    lib32-libvdpau
+    lib32-libva
+    libcanberra
+    ?? lib32-gnome-themes-standard [AUR]
+
+DE
+    budgie-desktop
+    paper-icon-theme-git [AUR]
+
+Dell XPS 9550
+    b43-firmware [AUR]
+    bluez-utils-compat [AUR]
+
+Other
+    private-internet-access-vpn [AUR]
+    bcompare [AUR]
+    slack-desktop [AUR]
+    insync [AUR]
