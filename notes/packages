@@ -1,6 +1,6 @@
 IDEs
     pycharm-professional [AUR]
-
+    clion
 
 Steam
     steam
@@ -13,6 +13,9 @@ DE
     budgie-desktop
     paper-icon-theme-git [AUR]
 
+eGPU
+    xf86-video-nouveau
+
 Dell XPS 9550
     b43-firmware [AUR]
     bluez-utils-compat [AUR]
@@ -22,3 +25,5 @@ Other
     bcompare [AUR]
     slack-desktop [AUR]
     insync [AUR]
+    antigen-git [AUR]
+    zsh
