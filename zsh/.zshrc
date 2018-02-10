@@ -56,7 +56,7 @@ alias gs="git status"
 alias dd="dd status=progress"
 
 chpwd() {
-    ls
+    ls --color=auto
 }
 
 # Default editor
