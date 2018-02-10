@@ -1,0 +1,9 @@
+host aws
+    hostname 18.216.117.1
+    user ubuntu
+    identityfile ~/.ssh/AWS.pem
+    serveraliveinterval 50
+
+host github.com
+    IdentityFile ~/.ssh/id_rsa
+
