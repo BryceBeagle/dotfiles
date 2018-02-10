@@ -16,6 +16,9 @@ alias gp="git push"
 alias gu="git pull"                        # gu = git update
 alias gc="git commit"
 alias ga="git add"
+alias gs="git status"
+
+alias dd="dd status=progress"
 
 function cd {                              # ls after every cd
     builtin cd "$@" && ls
