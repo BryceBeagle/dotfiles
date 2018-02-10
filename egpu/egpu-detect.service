@@ -1,0 +1,10 @@
+[Unit]
+Description=Detect eGPU
+
+[Service]
+Type=oneshot
+ExecStart=/etc/systemd/scripts/egpu-detect.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

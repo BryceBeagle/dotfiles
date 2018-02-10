@@ -1,11 +1,7 @@
 Section "Device"
     Identifier     "eGPU"
-    Driver         "nouveau"
+    Driver         "nvidia"
     VendorName     "NVIDIA Corporation"
     BusID          "PCI:11:0:0"
 EndSection
 
-#Section "Device"
-#    Identifier     "internal"
-#    Driver         "intel"
-#    VendorName
