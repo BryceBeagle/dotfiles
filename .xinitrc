@@ -3,4 +3,3 @@ export SSH_AUTH_SOCK
 
 export XDG_CURRENT_DESKTOP=Budgie:GNOME
 exec budgie-desktop
-#exec gnome-session
