@@ -11,6 +11,8 @@ antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle robbyrussell/oh-my-zsh plugins/extract
 
+antigen theme ~/.dotfiles/zsh/theme twoline --no-local-clone
+
 # We're finished making changes
 antigen apply
 
