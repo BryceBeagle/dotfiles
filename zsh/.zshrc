@@ -47,8 +47,8 @@ alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias la="ls -ah"
 
-alias gp="git push"
-alias gu="git pull"                        # gu = git update
+alias gk="git push"
+alias gp="git pull"
 alias gc="git commit"
 alias ga="git add"
 alias gs="git status"
