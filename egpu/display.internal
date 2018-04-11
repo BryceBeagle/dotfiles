@@ -1,6 +1,6 @@
 Section "Device"
     Identifier     "internal"
-    Driver         "nouveau"
+    Driver         "nvidia"
     VendorName     "NVIDIA Corporation"
     BusID          "PCI:01:00.0"
 EndSection
