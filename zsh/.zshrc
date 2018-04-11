@@ -61,3 +61,11 @@ chpwd() {
 
 # Default editor
 export EDITOR='nvim'
+
+# virtualenv
+export WORKON_HOME=~/.virtualenvs
+VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+source /usr/bin/virtualenvwrapper.sh
+
+# Path additions
+export PATH=$PATH:/usr/local/avr32/bin
