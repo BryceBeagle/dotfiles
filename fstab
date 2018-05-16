@@ -1,14 +1,13 @@
 # 
 # /etc/fstab: static file system information
 #
-# <file system>	<dir>	<type>	<options>	<dump>	<pass>
-# 
-# UUID=04e8f4f9-4c3c-4ab6-bb77-7ffc2b3d7da3 LABEL=Linux
+# <file system>	<dir>		<type>	<options>			<dump>	<pass>
+LABEL=arch	/ 		ext4 	rw,relatime,data=ordered	0 	1
+LABEL=BOOT	/boot 		vfat 	defaults                        0 	2
 
-#/dev/sda4 / ext4 rw,relatime,data=ordered 0 1
+LABEL=LunchBox	/mnt/LunchBox 	ntfs 	rw,relatime,auto,nofail         0 	2
+LABEL=BreadBox	/mnt/BreadBox 	ntfs 	rw,relatime,auto,nofail         0 	2
 
-UUID=04e8f4f9-4c3c-4ab6-bb77-7ffc2b3d7da3  /               ext4  rw,relatime,data=ordered                       0  1
-UUID=C4C8789EC8789102                      /mnt/HotBox     ntfs  rw,relatime,nofail,x-systemd.device-timeout=1  0  2
-UUID=742857B32857735A                      /mnt/BeagleBox  ntfs  rw,relatime,nofail,x-systemd.device-timeout=1  0  2
-UUID=6A7DF31740C10EE2                      /mnt/LunchBox   ntfs  rw,relatime,nofail,x-systemd.device-timeout=1  0  2
-UUID=28EFF6AC5C27CB8D                      /mnt/BreadBox   ntfs  rw,relatime,nofail,x-systemd.device-timeout=1  0  2
+
+#UUID=A6225D71225D4807                           /mnt/shared     ntfs-3g         uid=ignormies,gid=users,        0 2 
+
