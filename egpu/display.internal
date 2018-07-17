@@ -1,6 +1,11 @@
-Section "Device"
-    Identifier     "internal"
-    Driver         "nvidia"
-    VendorName     "NVIDIA Corporation"
-    BusID          "PCI:01:00.0"
-EndSection
+#Section "Module"
+#    Load "modesetting"
+#EndSection
+
+##Section "Device"
+#    Identifier     "internal"
+#    Driver         "nvidia"
+#    VendorName     "NVIDIA Corporation"
+#    BusID          "PCI:1:0:0"
+#    Option         "AllowEmptyInitialConfiguration"
+#EndSection
