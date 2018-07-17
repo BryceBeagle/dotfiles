@@ -3,5 +3,6 @@ Section "Device"
     Driver         "nvidia"
     VendorName     "NVIDIA Corporation"
     BusID          "PCI:11:0:0"
+    Option         "AllowExternalGpus" "true"
 EndSection
 
