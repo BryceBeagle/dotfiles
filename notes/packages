@@ -19,6 +19,7 @@ eGPU
 Dell XPS 9550
     b43-firmware [AUR]
     bluez-utils-compat [AUR]
+	bcm20703a1-firmware	[AUR]  # Dell XPS 9550 bluetooth driver
 
 Other
     private-internet-access-vpn [AUR]
@@ -27,3 +28,4 @@ Other
     insync [AUR]
     antigen-git [AUR]
     zsh
+	pacman-contrib             # brings in paccache
