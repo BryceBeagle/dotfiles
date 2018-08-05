@@ -56,6 +56,7 @@ packages = [
     ("arandr", Repo.official),
     ("vlc", Repo.official),
     ("sl", Repo.official),
-    ("gparted", Repo.official)
+    ("gparted", Repo.official),
+    ("deluge", Repo.official),
 
 ]
