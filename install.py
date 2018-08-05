@@ -32,11 +32,13 @@ def select_mirrors():
         subprocess.check_output(["pacman", "-S", "reflector"])
 
     print("Ranking top 5 mirrors")
-    subprocess.check_output(["reflector",
+    subprocess.check_output(["reflector", "--verbose",
                              "--country", "United States",
                              "--protocol", "https",
                              "--sort", "rate",
                              "--save", "/etc/pacman.d/mirrorlist"])
+
+    print("Done ranking")
 
 
 def setup_localization():
