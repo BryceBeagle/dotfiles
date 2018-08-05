@@ -26,25 +26,18 @@ def init_drives(target_drive="arch", boot_drive="BOOT"):
 
 
 def select_mirrors():
-    print("Curling mirrorlist for US")
-    mirrors = util.curl(
-        "https://www.archlinux.org/mirrorlist/"
-        "?country=US&protocol=https&use_mirror_status=on"
-    )
-
-    print("Uncommenting all servers")
-    mirrors = util.string_sub(r"^#Server", "Server", mirrors)
-
-    print("Deleting comment lines")
-    mirrors = util.string_sub(r"^#.", "", mirrors)
 
     try:
-        subprocess.check_output(["pacman", "-Qi", "pacman-contrib"])
+        subprocess.check_output(["pacman", "-Qi", "reflector"])
     except subprocess.CalledProcessError:
-        subprocess.check_output(["pacman", "-S", "pacman-contrib"])
+        subprocess.check_output(["pacman", "-S", "reflector"])
 
     print("Ranking top 5 mirrors")
-    util.pipe(["rankmirrors", "-n", "5", "-"], mirrors)
+    subprocess.call(["reflector",
+                     "--country 'United States'",
+                     "--protocol", "https",
+                     "--sort", "rate",
+                     "--save", "/etc/pacman.d/mirrorlist"])
 
 
 def setup_localization():

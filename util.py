@@ -36,7 +36,7 @@ def symlink(real, link, root_own=False):
     os.symlink(real, link)
 
 
-def pbegin_chroot(path):
+def begin_chroot(path):
     subprocess.call(["arch-chroot", path])
 
 
