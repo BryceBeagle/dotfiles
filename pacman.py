@@ -17,6 +17,7 @@ def install(packages: Union[str, List[str]]):
 
 def install_yay():
 
+    # Should be installed by nature of having this file, but just in case
     try:
         subprocess.check_output(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:

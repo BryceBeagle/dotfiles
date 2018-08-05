@@ -1,7 +1,6 @@
-import subprocess
-
 from notes.packages import packages, Repo
 import pacman
+import egpu
 
 
 official_packages = [pkg for pkg, repo in packages if repo is Repo.official]
@@ -20,3 +19,7 @@ pacman.install_aur(aur_packages)
 if multilib_packages:
     pacman.enable_multilib()
     pacman.install(multilib_packages)
+
+# Set up egpu related files
+egpu.setup()
+

@@ -25,6 +25,7 @@ packages = [
     ("b43-firmware", Repo.aur),
     ("bluez-utils-compat", Repo.aur),
     ("bcm20703a1-firmware", Repo.aur),  # Bluetooth driver
+    ("nvidia", Repo.official),          # Graphics card
 
     # Networking
     ("private-internet-access-vpn", Repo.aur),
