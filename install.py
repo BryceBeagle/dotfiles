@@ -38,8 +38,13 @@ def select_mirrors():
     print("Deleting comment lines")
     mirrors = util.string_sub(r"^#.", "", mirrors)
 
+    try:
+        subprocess.check_output(["pacman-contrib", "-Qi", "yay"])
+    except subprocess.CalledProcessError:
+        subprocess.check_output(["pacman", "-S", "pacman-contrib"])
+
     print("Ranking top 5 mirrors")
-    util.pipe(["rankmirrors", "-n", "5", "-"], mirrors)
+    util.pipe(["rankmirrors", "-n", "5", "-"], mirrors.encode())
 
 
 def setup_localization():

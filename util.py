@@ -51,7 +51,7 @@ def mount(label, location):
 
 def curl(address, quiet=True):
     quiet_flag = "-s" if quiet else ""
-    return subprocess.check_output(["curl", quiet_flag, address])
+    return subprocess.check_output(["curl", quiet_flag, address]).decode()
 
 
 def string_sub(pattern, replacement, string):
