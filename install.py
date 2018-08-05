@@ -11,15 +11,18 @@ import pacman
 import util
 
 
-def init_drives(target_drive="arch", boot_drive="boot"):
+def init_drives(target_drive="arch", boot_drive="BOOT"):
     print(f"Mounting target drive '{target_drive}' at /mnt/")
-    util.mount(target_drive, "/mnt/")
+    if not os.path.ismount("/mnt"):
+        util.mount(target_drive, "/mnt/")
 
     print("Creating /mnt/boot/")
-    os.mkdir("/mnt/boot/")
+    if not os.path.exists("/mnt/boot/"):
+        os.mkdir("/mnt/boot/")
 
     print(f"Mounting boot_drive '{boot_drive}' at /mnt/boot/")
-    util.mount(boot_drive, "/mnt/boot/")
+    if not os.path.ismount("/mnt/boot"):
+        util.mount(boot_drive, "/mnt/boot/")
 
 
 def select_mirrors():
