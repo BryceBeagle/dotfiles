@@ -39,12 +39,12 @@ def select_mirrors():
     mirrors = util.string_sub(r"^#.", "", mirrors)
 
     try:
-        subprocess.check_output(["pacman-contrib", "-Qi", "yay"])
+        subprocess.check_output(["pacman", "-Qi", "pacman-contrib"])
     except subprocess.CalledProcessError:
         subprocess.check_output(["pacman", "-S", "pacman-contrib"])
 
     print("Ranking top 5 mirrors")
-    util.pipe(["rankmirrors", "-n", "5", "-"], mirrors.encode())
+    util.pipe(["rankmirrors", "-n", "5", "-"], mirrors)
 
 
 def setup_localization():

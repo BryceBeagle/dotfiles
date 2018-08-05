@@ -36,7 +36,7 @@ def symlink(real, link, root_own=False):
     os.symlink(real, link)
 
 
-def begin_chroot(path):
+def pbegin_chroot(path):
     subprocess.call(["arch-chroot", path])
 
 
@@ -66,9 +66,7 @@ def file_sub(pattern, replacement, filename):
 
 
 def pipe(command: List[str], string: str):
-    process = subprocess.Popen(command, stdin=subprocess.PIPE)
-
-    process.communicate(input=string)
+    subprocess.run(command, input=string.encode(), check=True)
 
 
 def create_user(username, sudoer=True):
