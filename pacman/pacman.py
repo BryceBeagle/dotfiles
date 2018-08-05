@@ -8,8 +8,8 @@ import util
 
 def setup():
 
-    util.symlink("paccache-remove.hook", "/etc/pacman.d/hooks/")
-    util.symlink("paccache-upgrade.hook", "/etc/pacman.d/hooks/")
+    util.symlink("paccache-remove.hook", "/etc/pacman.d/hooks/", root_own=True)
+    util.symlink("paccache-upgrade.hook", "/etc/pacman.d/hooks/", root_own=True)
 
     official_packages = [pkg for pkg, repo in packages if repo is Repo.official]
     aur_packages      = [pkg for pkg, repo in packages if repo is Repo.aur]
@@ -28,6 +28,10 @@ def setup():
     if multilib_packages:
         enable_multilib()
         install(multilib_packages)
+
+
+def pacstrap():
+    subprocess.check_output(["pacstrap", "/mnt", "base"])
 
 
 def update():

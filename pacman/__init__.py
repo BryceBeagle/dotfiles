@@ -1,1 +1,1 @@
-from .pacman import setup
+from .pacman import pacstrap, setup

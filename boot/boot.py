@@ -2,14 +2,43 @@ import os
 import shutil
 import subprocess
 
+import util
 
-def setup():
 
+def ensure_boot_mounted():
     if not os.path.ismount("/boot"):
         subprocess.check_output(["mount", "-a"])
-    assert (os.path.ismount("/boot"),
-            "Error: Could not copy systemd-boot configuration: "
-            "/boot is not mounted")
+    assert os.path.ismount("/boot"), \
+        "Error: Could not copy systemd-boot configuration: " \
+        "/boot is not mounted"
 
-    shutil.copy2("loader.conf", "/boot/loader/")
-    shutil.copy2("arch.conf", "/boot/loader/entries/")
+
+def create_loader_conf(conf_name, default):
+    loader_conf = f"/boot/loader/loader.conf"
+    if not os.path.exists(loader_conf) or default:
+        # Create loader.conf
+        shutil.copyfile("loader.conf", loader_conf)
+        util.file_sub("%DEFAULT_CONF%", conf_name, loader_conf)
+
+
+def create_loader_entry(partition_label, install_dir, conf_name):
+    entry_conf = f"/boot/loader/entries/{conf_name}.conf"
+    shutil.copyfile("arch.conf", entry_conf)
+    util.file_sub("%INSTALL_DIR%", install_dir, entry_conf)
+    util.file_sub("%PART_LABEL%", partition_label, entry_conf)
+
+
+def setup(partition_label, conf_name="arch", default=True):
+
+    # Create directory to install to
+    install_dir = f"/installs/{conf_name}"
+    os.makedirs(f"/boot/{install_dir}")
+
+    # Install systemd-boot
+    subprocess.check_output([f"bootctl --path=/boot/{install_dir} install"])
+
+    # Create loader.conf
+    create_loader_conf(conf_name, default)
+
+    # Create loader entry
+    create_loader_entry(partition_label, install_dir, conf_name)
