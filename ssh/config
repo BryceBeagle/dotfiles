@@ -4,6 +4,10 @@ host aws
     identityfile ~/.ssh/AWS.pem
     serveraliveinterval 50
 
-host github.com
-    IdentityFile ~/.ssh/id_rsa
+host *
+    User git
+    IdentityFile ~/.ssh/%l_%r@%h_id_rsa
+
+#host github.com
+#    IdentityFile ~/.ssh/id_rsa
 
