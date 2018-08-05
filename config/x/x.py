@@ -1,6 +1,6 @@
 import util
 
 
-def setup():
-
-    util.symlink(".xinitrc", "/home/ignormies/")
+def setup(username):
+    print(f"Symlinking .xinitrc to /home/{username}")
+    util.symlink(".xinitrc", f"/home/{username}/")

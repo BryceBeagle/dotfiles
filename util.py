@@ -1,6 +1,6 @@
-import shutil
 import os
 import re
+import shutil
 import subprocess
 from typing import List
 
@@ -72,7 +72,6 @@ def pipe(command: List[str], string: str):
 
 
 def create_user(username, sudoer=True):
-
     subprocess.check_output(["useradd", "-m",
                              "-s", "/usr/bin/zsh",
                              "-G", "sudo",
@@ -85,3 +84,20 @@ def create_user(username, sudoer=True):
 
 def set_password(username):
     subprocess.check_output(["passwd", username])
+
+
+def recursive_chown(path, username):
+    for root, dirs, files in os.walk(path):
+
+        for dir_file in dirs + files:
+            shutil.chown(os.path.join(root, dir_file), username, username)
+
+
+def recursive_chmod(path, mode, ignore_git=True):
+    for root, dirs, files in os.walk(path):
+
+        if ignore_git:
+            dirs[:] = [dir_ for dir_ in dirs if ".git" not in dir_]
+
+        for dir_file in dirs + files:
+            os.chmod(os.path.join(root, dir_file), mode)

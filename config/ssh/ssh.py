@@ -1,6 +1,6 @@
 import util
 
 
-def setup():
-
-    util.symlink("config", "/home/ignormies/.ssh/")
+def setup(username):
+    print(f"Symlinking ssh config to /home/{username}/.ssh/")
+    util.symlink("config", f"/home/{username}/.ssh/")

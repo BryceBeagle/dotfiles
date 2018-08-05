@@ -1,7 +1,6 @@
 import util
 
 
-def setup():
-
-    util.symlink("init.vim", "/home/ignormies/.config/nvim/")
-
+def setup(username):
+    print(f"Symlinking init.vim to /home/{username}/.config/nvim/")
+    util.symlink("init.vim", f"/home/{username}/.config/nvim/")

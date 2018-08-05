@@ -29,16 +29,15 @@ def create_loader_entry(partition_label, install_dir, conf_name):
 
 
 def setup(partition_label, conf_name="arch", default=True):
-
-    # Create directory to install to
-    install_dir = f"/installs/{conf_name}"
+    install_dir = f"/installs/{conf_name}/"
+    print(f"Creating directory '{install_dir}' for bootloader")
     os.makedirs(f"/boot/{install_dir}")
 
-    # Install systemd-boot
+    print(f"Installing systemd-boot to /boot/{install_dir}")
     subprocess.check_output([f"bootctl --path=/boot/{install_dir} install"])
 
-    # Create loader.conf
+    print("Creating loader.conf")
     create_loader_conf(conf_name, default)
 
-    # Create loader entry
+    print("Creating boot loader entry")
     create_loader_entry(partition_label, install_dir, conf_name)

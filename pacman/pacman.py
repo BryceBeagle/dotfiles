@@ -2,31 +2,36 @@ import os
 import subprocess
 from typing import List, Union
 
-from pacman.packages import packages, Repo
 import util
+from pacman.packages import packages, Repo
 
 
 def setup():
-
+    print("Symlinking paccache hooks to /etc/pacman.d/")
     util.symlink("paccache-remove.hook", "/etc/pacman.d/hooks/", root_own=True)
     util.symlink("paccache-upgrade.hook", "/etc/pacman.d/hooks/", root_own=True)
 
     official_packages = [pkg for pkg, repo in packages if repo is Repo.official]
-    aur_packages      = [pkg for pkg, repo in packages if repo is Repo.aur]
+    aur_packages = [pkg for pkg, repo in packages if repo is Repo.aur]
     multilib_packages = [pkg for pkg, repo in packages if repo is Repo.multilib]
 
-    # Update packages
+    print("Updating packages")
     update()
 
-    # Install packages
+    print("Installing official repo packages")
     install(official_packages)
 
+    print("Installing yay")
     install_yay()
     if aur_packages:
+        print("Installing AUR packages")
         install_aur(aur_packages)
 
     if multilib_packages:
+        print("Enabling multilib")
         enable_multilib()
+
+        print("Installing multilib packages")
         install(multilib_packages)
 
 
@@ -47,7 +52,6 @@ def install(pkgs: Union[str, List[str]]):
 
 
 def install_yay():
-
     # Should be installed by nature of having this file, but just in case
     try:
         subprocess.check_output(["pacman", "-Qi", "git"])
@@ -74,7 +78,6 @@ def install_yay():
 
 
 def install_aur(pkgs: Union[str, List[str]]):
-
     # Install yay if we don't already have it
     try:
         subprocess.check_output(["pacman", "-Qi", "yay"])

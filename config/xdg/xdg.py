@@ -1,6 +1,6 @@
 import util
 
 
-def setup():
-
-    util.symlink("user-dirs.dirs", "/home/ignormies/.config/")
+def setup(username):
+    print(f"Symlinking user-dirs.dirs to /home/{username}/.config/")
+    util.symlink("user-dirs.dirs", f"/home/{username}/.config/")
