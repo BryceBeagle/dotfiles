@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Matlab
-Exec=/opt/matlab/bin/matlab -desktop
-Icon=/opt/matlab/bin/glnxa64/cef_resources/matlab_icon.png

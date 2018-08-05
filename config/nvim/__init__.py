@@ -1,0 +1,1 @@
+from .nvim import setup

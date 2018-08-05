@@ -6,6 +6,7 @@ Repo = Enum("Repo", ["official", "multilib", "aur"])
 packages = [
 
     # Editors
+    ("nvim", Repo.official),
     ("pycharm-professional", Repo.aur),
     ("clion", Repo.official),
     ("bcompare", Repo.aur),
@@ -37,7 +38,13 @@ packages = [
     ("zsh", Repo.official),
     ("antigen-git", Repo.aur),
 
+    # Fonts
+    ("noto-fonts", Repo.official),
+    ("noto-fonts-emoji", Repo.official),
+    ("noto-fonts-sc", Repo.aur),  # Chinese symbols
+
     # Other
     ("pacman-contrib", Repo.official),  # Brings in paccache
+    ("eagle", Repo.aur),
 
 ]

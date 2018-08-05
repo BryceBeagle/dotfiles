@@ -1,18 +1,14 @@
 import os
-
-
-def symlink(real, link):
-    real = os.path.abspath(real)
-    os.symlink(real, link)
+import util
 
 
 def setup():
 
     # Symlink files
-    symlink("display.egpu", "/etc/X11/xorg.conf.d/")
-    symlink("display.internal", "/etc/X11/xorg.conf.d/")
-    symlink("egpu-detect.service", "/etc/systemd/system/")
-    symlink("egpu-detect.sh", "/etc/systemd/scripts")
+    util.symlink("display.egpu", "/etc/X11/xorg.conf.d/")
+    util.symlink("display.internal", "/etc/X11/xorg.conf.d/")
+    util.symlink("egpu-detect.service", "/etc/systemd/system/")
+    util.symlink("egpu-detect.sh", "/etc/systemd/scripts")
 
     # Remove NVIDIA default xorg conf
     try:

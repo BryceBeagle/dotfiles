@@ -1,0 +1,1 @@
+from .xdg import setup

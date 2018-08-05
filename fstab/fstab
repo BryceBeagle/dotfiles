@@ -1,0 +1,6 @@
+# <file system> <dir>           <type>  <options>                   <dump>  <pass>
+LABEL=arch      / 	            ext4    rw,relatime,data=ordered    0       1
+LABEL=BOOT	    /boot           vfat    defaults                    0       2
+
+LABEL=LunchBox  /mnt/LunchBox   ntfs 	rw,relatime,auto,nofail     0       2
+LABEL=BreadBox  /mnt/BreadBox   ntfs 	rw,relatime,auto,nofail     0       2
