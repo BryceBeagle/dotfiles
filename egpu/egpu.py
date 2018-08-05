@@ -11,8 +11,5 @@ def setup():
     util.symlink("egpu-detect.sh", "/etc/systemd/scripts")
 
     # Remove NVIDIA default xorg conf
-    try:
-        os.remove("/etc/X11/xorg.conf.d/20-nvidia.conf")
-    except IOError:
-        pass
+    util.remove("/etc/X11/xorg.conf.d/20-nvidia.conf")
 

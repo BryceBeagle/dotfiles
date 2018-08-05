@@ -5,6 +5,12 @@ Repo = Enum("Repo", ["official", "multilib", "aur"])
 
 packages = [
 
+    # Prerequisites
+    ("wpa_supplicant", Repo.official),
+    ("dialog", Repo.official),
+    ("openssh", Repo.official),
+    ("git", Repo.official),
+
     # Desktop Environment
     ("xorg-server", Repo.official),
     ("budgie-desktop", Repo.official),
@@ -59,5 +65,6 @@ packages = [
     ("gparted", Repo.official),
     ("deluge", Repo.official),
     ("intel-ucode", Repo.official),
+    ("sudo", Repo.official),
 
 ]
