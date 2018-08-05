@@ -26,18 +26,17 @@ def init_drives(target_drive="arch", boot_drive="BOOT"):
 
 
 def select_mirrors():
-
     try:
         subprocess.check_output(["pacman", "-Qi", "reflector"])
     except subprocess.CalledProcessError:
         subprocess.check_output(["pacman", "-S", "reflector"])
 
     print("Ranking top 5 mirrors")
-    subprocess.call(["reflector",
-                     "--country 'United States'",
-                     "--protocol", "https",
-                     "--sort", "rate",
-                     "--save", "/etc/pacman.d/mirrorlist"])
+    subprocess.check_output(["reflector",
+                             "--country", "United States",
+                             "--protocol", "https",
+                             "--sort", "rate",
+                             "--save", "/etc/pacman.d/mirrorlist"])
 
 
 def setup_localization():
@@ -97,7 +96,6 @@ def move_dotfiles(username):
 
 
 if __name__ == '__main__':
-
     hostname = "griefcake"
     username = "ignormies"
 
