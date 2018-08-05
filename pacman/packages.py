@@ -58,5 +58,6 @@ packages = [
     ("sl", Repo.official),
     ("gparted", Repo.official),
     ("deluge", Repo.official),
+    ("intel-ucode", Repo.official),
 
 ]
