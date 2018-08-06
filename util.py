@@ -41,7 +41,27 @@ def symlink(real, link, root_own=False):
 
 
 def begin_chroot(path):
-    run(["arch-chroot", path])
+    """Note that this chroot cannot be escaped normally"""
+
+    os.chdir(path)
+
+    print("Mounting /proc")
+    run(["mount", "-t", "proc", "/proc", "proc/"])
+
+    print("Mounting /sys")
+    run(["mount", "--rbind", "/sys", "sys/"])
+
+    print("Mounting /dev")
+    run(["mount", "--rbind", "/dev", "dev/"])
+
+    print("Mounting /run")
+    run(["mount", "--rbind", "/run", "run/"])
+
+    print("Copying resolv.conf")
+    shutil.copyfile("/etc/resolv.conf", "etc/resolv.conf")
+
+    print(f"Chrooting to {path}")
+    os.chroot(path)
 
 
 def mount(name, location):
