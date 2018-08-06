@@ -5,6 +5,10 @@ import subprocess
 from typing import List
 
 
+def run(command):
+    subprocess.run(command, check=True)
+
+
 def remove(path):
     try:
         os.remove(path)
@@ -37,16 +41,11 @@ def symlink(real, link, root_own=False):
 
 
 def begin_chroot(path):
-    subprocess.call(["arch-chroot", path])
-
-
-def lsblk():
-    subprocess.check_output(["lsblk"])
+    run(["arch-chroot", path])
 
 
 def mount(label, location):
-    # https://stackoverflow.com/a/29156997
-    subprocess.check_output(["mount", "-L", label, location])
+    run(["mount", "-L", label, location])
 
 
 def curl(address, quiet=True):
@@ -70,18 +69,18 @@ def pipe(command: List[str], string: str):
 
 
 def create_user(username, sudoer=True):
-    subprocess.check_output(["useradd", "-m",
-                             "-s", "/usr/bin/zsh",
-                             "-G", "sudo",
-                             username])
+    run(["useradd", "-m",
+         "-s", "/usr/bin/zsh",
+         "-G", "sudo",
+         username])
 
     if sudoer:
-        subprocess.check_output(["groupadd", "sudo"])
-        subprocess.check_output(["gpasswd", "-a", username])
+        run(["groupadd", "sudo"])
+        run(["gpasswd", "-a", username])
 
 
 def set_password(username):
-    subprocess.check_output(["passwd", username])
+    run(["passwd", username])
 
 
 def recursive_chown(path, username):

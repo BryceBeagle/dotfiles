@@ -11,32 +11,24 @@ import pacman
 import util
 
 
-def init_drives(target_drive="arch", boot_drive="BOOT"):
+def mount_target(target_drive="arch"):
     print(f"Mounting target drive '{target_drive}' at /mnt/")
     if not os.path.ismount("/mnt"):
         util.mount(target_drive, "/mnt/")
 
-    print("Creating /mnt/boot/")
-    if not os.path.exists("/mnt/boot/"):
-        os.mkdir("/mnt/boot/")
-
-    print(f"Mounting boot_drive '{boot_drive}' at /mnt/boot/")
-    if not os.path.ismount("/mnt/boot"):
-        util.mount(boot_drive, "/mnt/boot/")
-
 
 def select_mirrors():
     try:
-        subprocess.check_output(["pacman", "-Qi", "reflector"])
+        util.run(["pacman", "-Qi", "reflector"])
     except subprocess.CalledProcessError:
-        subprocess.check_output(["pacman", "-S", "reflector"])
+        util.run(["pacman", "-S", "reflector"])
 
     print("Ranking top 5 mirrors")
-    subprocess.check_output(["reflector",
-                             "--country", "United States",
-                             "--protocol", "https",
-                             "--sort", "rate",
-                             "--save", "/etc/pacman.d/mirrorlist"])
+    util.run(["reflector",
+              "--country", "United States",
+              "--protocol", "https",
+              "--sort", "rate",
+              "--save", "/etc/pacman.d/mirrorlist"])
 
 
 def setup_localization():
@@ -44,11 +36,11 @@ def setup_localization():
     util.symlink("/usr/share/zoneinfo/America/Los_Angeles", "/etc/localtime")
 
     print("Running hwclock to generate /etc/adjtime")
-    subprocess.check_output(["hwclock", "--systohc"])
+    util.run(["hwclock", "--systohc"])
 
     print("Running locale-gen for en_US.UTF-8 UTF-8")
     util.file_sub("#en_US.UTF-8 UTF-8", "en_US.UTF-8 UTF-8", "/etc/locale.gen")
-    subprocess.check_output(["locale-gen"])
+    util.run(["locale-gen"])
 
     print("Setting the LANG variable in /etc/locale.conf")
     with open("/etc/locale.conf", "w") as fi:
@@ -99,7 +91,7 @@ if __name__ == '__main__':
     hostname = "griefcake"
     username = "ignormies"
 
-    init_drives(target_drive="arch-test")
+    mount_target("arch-test")
     select_mirrors()
     pacman.pacstrap()
 

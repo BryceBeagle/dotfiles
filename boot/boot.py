@@ -1,13 +1,12 @@
 import os
 import shutil
-import subprocess
 
 import util
 
 
 def ensure_boot_mounted():
     if not os.path.ismount("/boot"):
-        subprocess.check_output(["mount", "-a"])
+        util.run(["mount", "-a"])
     assert os.path.ismount("/boot"), \
         "Error: Could not copy systemd-boot configuration: " \
         "/boot is not mounted"
@@ -30,9 +29,9 @@ def create_loader_entry(partition_label, install_dir, conf_name):
 
 def mkinitcpio(install_dir):
     print("Running mkinitcpio for updated kernel modules")
-    subprocess.check_output(["mkinitcpio",
-                             "-p", "linux",
-                             "-d", install_dir])
+    util.run(["mkinitcpio",
+              "-p", "linux",
+              "-d", install_dir])
 
 
 def setup(partition_label, conf_name="arch", default=True):
@@ -41,7 +40,7 @@ def setup(partition_label, conf_name="arch", default=True):
     os.makedirs(f"/boot/{install_dir}")
 
     print(f"Installing systemd-boot to /boot/{install_dir}")
-    subprocess.check_output([f"bootctl --path=/boot/{install_dir} install"])
+    util.run([f"bootctl --path=/boot/{install_dir} install"])
 
     print("Creating loader.conf")
     create_loader_conf(conf_name, default)
