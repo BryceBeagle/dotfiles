@@ -62,7 +62,10 @@ def setup_localization():
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
     print("Running locale-gen for en_US.UTF-8 UTF-8")
-    util.file_sub("#en_US.UTF-8 UTF-8", "en_US.UTF-8 UTF-8", "/etc/locale.gen")
+    # Using sed because python has a problem with locale here
+    util.run(["sed", "-i",
+              "s/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/",
+              "/etc/locale.gen"])
     util.run(["locale-gen"])
 
     print("Setting the locale")
