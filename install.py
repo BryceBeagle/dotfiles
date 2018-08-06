@@ -14,8 +14,8 @@ import util
 
 def select_target():
     util.lslbk()
-    target = input("Input the name of the partition to install to: ")
-    return target.strip()
+    target = input("Input the name of the partition to install to: /dev/")
+    return "/dev/" + target.strip()
 
 
 def format_target(target):
@@ -28,10 +28,9 @@ def format_target(target):
 
 def mount_target(target):
 
-    if '/' in target:
-        print(f"Mounting target '{target}' at /mnt/")
-        if not os.path.ismount("/mnt"):
-            util.mount(target, "/mnt/")
+    print(f"Mounting target '{target}' at /mnt/")
+    if not os.path.ismount("/mnt"):
+        util.mount(target, "/mnt/")
 
 
 def select_mirrors():
@@ -108,7 +107,9 @@ if __name__ == '__main__':
     hostname = "griefcake"
     username = "ignormies"
 
-    mount_target(select_target())
+    target_drive = select_target()
+    format_target(target_drive)
+    mount_target(target_drive)
     select_mirrors()
     pacman.pacstrap()
 
