@@ -73,15 +73,12 @@ def curl(address, quiet=True):
     return subprocess.check_output(["curl", quiet_flag, address]).decode()
 
 
-def string_sub(pattern, replacement, string):
-    return re.sub(pattern, replacement, string, flags=re.MULTILINE)
-
-
 def file_sub(pattern, replacement, filename):
-    with open(filename, "r+") as fi:
-        for line in fi:
-            line = string_sub(pattern, replacement, line)
-            fi.write(line)
+    with open(filename) as fi:
+        text = fi.read()
+
+    with open(filename, "w") as fi:
+        fi.write(re.sub(pattern, replacement, text))
 
 
 def pipe(command: List[str], string: str):
