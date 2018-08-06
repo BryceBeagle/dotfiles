@@ -23,7 +23,12 @@ def format_target(target):
              "Are you sure you want to continue? [y/N] ").lower() != 'y':
         sys.exit("Canceling operation")
 
-    util.run(["mkfs.ext4", target])
+    label = input("Label for drive: ").strip()
+
+    print(f"Making ext4 filesystem on target '{target}' with label '{label}'")
+    util.run(["mkfs.ext4", target, "-L", label])
+
+    return label
 
 
 def mount_target(target):
@@ -108,7 +113,7 @@ if __name__ == '__main__':
     username = "ignormies"
 
     target_drive = select_target()
-    format_target(target_drive)
+    label = format_target(target_drive)
     mount_target(target_drive)
     select_mirrors()
     pacman.pacstrap()
@@ -135,4 +140,4 @@ if __name__ == '__main__':
     kernel_modules.setup()
 
     # Set up bootloader
-    boot.setup(partition_label="arch", conf_name="arch")
+    boot.setup(partition_label=label, conf_name="arch")
