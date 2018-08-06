@@ -62,10 +62,7 @@ def setup_localization():
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
     print("Running locale-gen for en_US.UTF-8 UTF-8")
-    # Using sed because python has a problem with locale here
-    util.run(["sed", "-i",
-              "s/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/",
-              "/etc/locale.gen"])
+    util.file_sub("#en_US.UTF-8 UTF-8", "en_US.UTF-8 UTF-8", "/etc/locale.gen")
     util.run(["locale-gen"])
 
     print("Setting the locale")
@@ -74,11 +71,11 @@ def setup_localization():
 
 def setup_hostname(hostname):
     print(f"Creating /etc/hostname file for '{hostname}'")
-    with open("/etc/hostname", "w") as fi:
+    with open("/etc/hostname", "w", encoding="utf-8") as fi:
         fi.write(f"{hostname}\n")
 
     print("Addding matching entry to /etc/hosts")
-    with open("/etc/hosts"):
+    with open("/etc/hosts", encoding="utf-8"):
         fi.write(f"127.0.0.1	localhost\n")
         fi.write(f"::1		    localhost\n")
         fi.write(f"127.0.1.1	{hostname}.localdomain	{hostname}\n")

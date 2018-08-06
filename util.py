@@ -74,10 +74,10 @@ def curl(address, quiet=True):
 
 
 def file_sub(pattern, replacement, filename):
-    with open(filename) as fi:
+    with open(filename, encoding="utf-8") as fi:
         text = fi.read()
 
-    with open(filename, "w") as fi:
+    with open(filename, "w", encoding="utf-8") as fi:
         fi.write(re.sub(pattern, replacement, text))
 
 
