@@ -24,7 +24,7 @@ def format_target(target):
              "Are you sure you want to continue? [y/N] ").lower() != 'y':
         sys.exit("Canceling operation")
 
-    label = input("Label for drive: ").strip()
+    label = input("Label for new file system: ").strip()
 
     print(f"Making ext4 filesystem on target '{target}' with label '{label}'")
     util.run(["mkfs.ext4", target, "-L", label])
@@ -74,8 +74,8 @@ def setup_hostname(hostname):
     with open("/etc/hostname", "w", encoding="utf-8") as fi:
         fi.write(f"{hostname}\n")
 
-    print("Addding matching entry to /etc/hosts")
-    with open("/etc/hosts", encoding="utf-8") as fi:
+    print("Adding matching entry to /etc/hosts")
+    with open("/etc/hosts", "w", encoding="utf-8") as fi:
         fi.write(f"127.0.0.1	localhost\n")
         fi.write(f"::1		    localhost\n")
         fi.write(f"127.0.1.1	{hostname}.localdomain	{hostname}\n")
