@@ -36,7 +36,8 @@ def setup():
 
 
 def pacstrap():
-    subprocess.check_output(["pacstrap", "/mnt", "base"])
+    print("Running pacstrap")
+    subprocess.check_output(["pacstrap", "-i", "/mnt/"])
 
 
 def update():

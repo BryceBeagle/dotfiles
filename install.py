@@ -32,13 +32,11 @@ def select_mirrors():
         subprocess.check_output(["pacman", "-S", "reflector"])
 
     print("Ranking top 5 mirrors")
-    subprocess.check_output(["reflector", "--verbose",
+    subprocess.check_output(["reflector",
                              "--country", "United States",
                              "--protocol", "https",
                              "--sort", "rate",
                              "--save", "/etc/pacman.d/mirrorlist"])
-
-    print("Done ranking")
 
 
 def setup_localization():
@@ -101,7 +99,6 @@ if __name__ == '__main__':
     hostname = "griefcake"
     username = "ignormies"
 
-    # Set up installation environment
     init_drives(target_drive="arch-test")
     select_mirrors()
     pacman.pacstrap()
