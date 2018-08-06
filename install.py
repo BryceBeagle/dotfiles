@@ -1,6 +1,7 @@
 import os
 import shutil
 import subprocess
+import sys
 
 import boot
 import config
@@ -11,10 +12,26 @@ import pacman
 import util
 
 
-def mount_target(target_drive="arch"):
-    print(f"Mounting target drive '{target_drive}' at /mnt/")
-    if not os.path.ismount("/mnt"):
-        util.mount(target_drive, "/mnt/")
+def select_target():
+    util.lslbk()
+    target = input("Input the name of the partition to install to: ")
+    return target.strip()
+
+
+def format_target(target):
+    if input(f"Target '{target}' will be wiped. "
+             "Are you sure you want to continue? [y/N] ").lower() != 'y':
+        sys.exit("Canceling operation")
+
+    util.run(["mkfs.ext4", target])
+
+
+def mount_target(target):
+
+    if '/' in target:
+        print(f"Mounting target '{target}' at /mnt/")
+        if not os.path.ismount("/mnt"):
+            util.mount(target, "/mnt/")
 
 
 def select_mirrors():
@@ -91,7 +108,7 @@ if __name__ == '__main__':
     hostname = "griefcake"
     username = "ignormies"
 
-    mount_target("arch-test")
+    mount_target(select_target())
     select_mirrors()
     pacman.pacstrap()
 

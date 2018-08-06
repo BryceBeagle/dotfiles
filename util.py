@@ -44,8 +44,8 @@ def begin_chroot(path):
     run(["arch-chroot", path])
 
 
-def mount(label, location):
-    run(["mount", "-L", label, location])
+def mount(name, location):
+    run(["mount", name, location])
 
 
 def curl(address, quiet=True):
@@ -98,3 +98,8 @@ def recursive_chmod(path, mode, ignore_git=True):
 
         for dir_file in dirs + files:
             os.chmod(os.path.join(root, dir_file), mode)
+
+
+def lslbk():
+
+    run(["lsblk", "-o", "name,label,size,mountpoint"])
