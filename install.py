@@ -109,9 +109,6 @@ if __name__ == '__main__':
     setup_localization()
     setup_hostname(hostname)
 
-    # Set up bootloader
-    boot.setup(partition_label="arch", conf_name="arch")
-
     # Create user
     util.create_user(username)
     util.set_password("root")
@@ -126,3 +123,6 @@ if __name__ == '__main__':
     fstab.setup()
     egpu.setup()
     kernel_modules.setup()
+
+    # Set up bootloader
+    boot.setup(partition_label="arch", conf_name="arch")

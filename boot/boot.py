@@ -28,6 +28,13 @@ def create_loader_entry(partition_label, install_dir, conf_name):
     util.file_sub("%PART_LABEL%", partition_label, entry_conf)
 
 
+def mkinitcpio(install_dir):
+    print("Running mkinitcpio for updated kernel modules")
+    subprocess.check_output(["mkinitcpio",
+                             "-p", "linux",
+                             "-d", install_dir])
+
+
 def setup(partition_label, conf_name="arch", default=True):
     install_dir = f"/installs/{conf_name}/"
     print(f"Creating directory '{install_dir}' for bootloader")
@@ -41,3 +48,6 @@ def setup(partition_label, conf_name="arch", default=True):
 
     print("Creating boot loader entry")
     create_loader_entry(partition_label, install_dir, conf_name)
+
+    print(f"Running mkinitcpio with generatedir '{install_dir}")
+    mkinitcpio(install_dir)
