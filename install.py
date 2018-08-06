@@ -1,3 +1,4 @@
+import locale
 import os
 import shutil
 import subprocess
@@ -32,7 +33,6 @@ def format_target(target):
 
 
 def mount_target(target):
-
     print(f"Mounting target '{target}' at /mnt/")
     if not os.path.ismount("/mnt"):
         util.mount(target, "/mnt/")
@@ -59,13 +59,14 @@ def setup_localization():
     print("Running hwclock to generate /etc/adjtime")
     util.run(["hwclock", "--systohc"])
 
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
     print("Running locale-gen for en_US.UTF-8 UTF-8")
     util.file_sub("#en_US.UTF-8 UTF-8", "en_US.UTF-8 UTF-8", "/etc/locale.gen")
     util.run(["locale-gen"])
 
-    print("Setting the LANG variable in /etc/locale.conf")
-    with open("/etc/locale.conf", "w") as fi:
-        fi.write("LANG=en_US.UTF-8\n")
+    print("Setting the locale")
+    util.run(["localectl", "set-locale", "LANG=en_US.UTF-8"])
 
 
 def setup_hostname(hostname):
