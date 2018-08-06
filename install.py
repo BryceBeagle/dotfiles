@@ -75,7 +75,7 @@ def setup_hostname(hostname):
         fi.write(f"{hostname}\n")
 
     print("Addding matching entry to /etc/hosts")
-    with open("/etc/hosts", encoding="utf-8"):
+    with open("/etc/hosts", encoding="utf-8") as fi:
         fi.write(f"127.0.0.1	localhost\n")
         fi.write(f"::1		    localhost\n")
         fi.write(f"127.0.1.1	{hostname}.localdomain	{hostname}\n")
