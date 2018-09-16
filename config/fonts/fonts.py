@@ -1,2 +1,10 @@
-def setup(_username):
-    print(f"Doing NOTHING for fonts at the moment")
+import util
+
+
+def setup(username):
+    print(
+        f"Symlinking 10-emoji.conf to "
+        f"/home/{username}/.config/fontconfig/conf.d/")
+    util.symlink(
+        "10-emoji.conf",
+        f"/home/{username}/.config/fontconfig/conf.d/")
