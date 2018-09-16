@@ -20,8 +20,6 @@ antigen apply
 autoload -U colors && colors
 setopt promptsubst
 
-
-
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]PB657b83" # S_base00
     echo -en "\e]PA586e75" # S_base01
@@ -64,7 +62,6 @@ export EDITOR='nvim'
 
 # virtualenv
 export WORKON_HOME=~/.virtualenvs
-VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
-
+export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 source /usr/bin/virtualenvwrapper.sh
 
