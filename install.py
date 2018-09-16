@@ -84,11 +84,18 @@ def setup_hostname(hostname):
 def setup_sudoers():
     """Allow use of sudo"""
 
+    try:
+        util.run(["pacman", "-Qi", "sudo"])
+    except subprocess.CalledProcessError:
+        util.run(["pacman", "-S", "sudo"])
+
     # Create sudo group
+    print("Creating sudo group")
     util.create_group("sudo")
 
     # Uncomment line of sudoers file that allows all members of group sudo to
     # use sudo
+    print("Allowing members of group sudo to use sudo")
     util.file_sub(
         "# %sudo ALL=(ALL) ALL",
         "%sudo ALL=(ALL) ALL",
