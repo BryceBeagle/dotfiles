@@ -35,8 +35,8 @@ def mkinitcpio(install_dir):
 
 
 def setup(partition_label, conf_name="arch", default=True):
-    install_dir = f"/installs/{conf_name}/"
-    print(f"Creating directory '{install_dir}' for bootloader")
+    install_dir = f"installs/{conf_name}/"
+    print(f"Creating directory /boot/'{install_dir}' for bootloader")
     os.makedirs(f"/boot/{install_dir}")
 
     print(f"Installing systemd-boot to /boot/{install_dir}")
@@ -48,5 +48,5 @@ def setup(partition_label, conf_name="arch", default=True):
     print("Creating boot loader entry")
     create_loader_entry(partition_label, install_dir, conf_name)
 
-    print(f"Running mkinitcpio with generatedir '{install_dir}")
+    print(f"Running mkinitcpio with generatedir=/'{install_dir}")
     mkinitcpio(install_dir)

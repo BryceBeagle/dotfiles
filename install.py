@@ -156,4 +156,4 @@ if __name__ == '__main__':
     kernel_modules.setup()
 
     # Set up bootloader
-    boot.setup(partition_label=label, conf_name="arch")
+    # boot.setup(partition_label=label, conf_name="arch")
