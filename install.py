@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import locale
 import os
 import shutil
@@ -41,19 +39,17 @@ def mount_target(target):
 
 
 def select_mirrors():
-    # try:
-    #     util.run(["pacman", "-Qi", "reflector"])
-    # except subprocess.CalledProcessError:
-    #     util.run(["pacman", "-S", "--noconfirm", "reflector"])
-    #
-    # print("Ranking top 5 mirrors")
-    # util.run(["reflector",
-    #           "--country", "United States",
-    #           "--protocol", "https",
-    #           "--sort", "rate",
-    #           "--save", "/etc/pacman.d/mirrorlist"])
+    try:
+        util.run(["pacman", "-Qi", "reflector"])
+    except subprocess.CalledProcessError:
+        util.run(["pacman", "-S", "reflector"])
 
-    util.run(["curl -s 'https://www.archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist"])
+    print("Ranking top 5 mirrors")
+    util.run(["reflector",
+              "--country", "United States",
+              "--protocol", "https",
+              "--sort", "rate",
+              "--save", "/etc/pacman.d/mirrorlist"])
 
 
 def setup_localization():
