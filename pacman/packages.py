@@ -55,6 +55,7 @@ packages = [
     ("noto-fonts", Repo.official),
     ("noto-fonts-emoji", Repo.official),
     ("noto-fonts-sc", Repo.aur),  # Chinese symbols
+    ("ttf-hack", Repo.official),  # Terminal font
 
     # Other
     ("pacman-contrib", Repo.official),  # Brings in paccache
