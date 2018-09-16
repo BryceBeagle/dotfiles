@@ -85,6 +85,10 @@ def pipe(command: List[str], string: str):
     subprocess.run(command, input=string.encode(), check=True)
 
 
+def create_group(groupname):
+    run(["groupadd", groupname])
+
+
 def create_user(username, sudoer=True):
     run(["useradd", "-m",
          "-s", "/usr/bin/zsh",

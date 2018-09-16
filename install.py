@@ -81,6 +81,20 @@ def setup_hostname(hostname):
         fi.write(f"127.0.1.1	{hostname}.localdomain	{hostname}\n")
 
 
+def setup_sudoers():
+    """Allow use of sudo"""
+
+    # Create sudo group
+    util.create_group("sudo")
+
+    # Uncomment line of sudoers file that allows all members of group sudo to
+    # use sudo
+    util.file_sub(
+        "# %sudo ALL=(ALL) ALL",
+        "%sudo ALL=(ALL) ALL",
+        "/etc/sudoers")
+
+
 def move_dotfiles(username):
     git_dir = f"~{username}/git/"
 
@@ -124,6 +138,7 @@ if __name__ == '__main__':
 
     setup_localization()
     setup_hostname(hostname)
+    setup_sudoers()
 
     # Create user
     util.create_user(username)
