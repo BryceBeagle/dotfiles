@@ -2,7 +2,7 @@
 
 gpu=$(/usr/bin/lspci)
 
-if grep -q 1070 <<< "$gpu" ; then
+if grep -q 10[78]0 <<< "$gpu" ; then
     echo "eGPU Found"
     ln -sf /etc/X11/xorg.conf.d/display.egpu /etc/X11/xorg.conf.d/20-display.conf
 else
