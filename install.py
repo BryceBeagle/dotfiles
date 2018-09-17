@@ -112,7 +112,7 @@ def move_dotfiles(username):
     else:
         print("Git dir already exists. Continuing")
 
-    current_dotfiles_location = os.path.dirname(__file__)
+    current_dotfiles_location = os.path.dirname(os.path.abspath(__file__))
     print(f"Moving dotfiles clone from {current_dotfiles_location} "
           f"to '{git_dir}'")
     shutil.move(current_dotfiles_location, git_dir)
