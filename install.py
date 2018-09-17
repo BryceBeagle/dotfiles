@@ -54,7 +54,8 @@ def select_mirrors():
 
 def setup_localization():
     print("Setting time zone to America/Los_Angeles")
-    util.symlink("/usr/share/zoneinfo/America/Los_Angeles", "/etc/localtime")
+    util.symlink("/usr/share/zoneinfo/America/Los_Angeles", "/etc/localtime",
+                 link_is_dir=False)
 
     print("Running hwclock to generate /etc/adjtime")
     util.run(["hwclock", "--systohc"])
