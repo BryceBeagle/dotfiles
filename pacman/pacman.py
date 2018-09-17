@@ -50,7 +50,7 @@ def update():
 def install_packages(pkgs: Union[str, List[str]]):
 
     if isinstance(pkgs, str):
-        pkgs = [packages]
+        pkgs = [pkgs]
 
     util.run(["pacman", "-S"] + pkgs)
 
@@ -87,7 +87,7 @@ def install_aur_packages(pkgs: Union[str, List[str]], username):
         install_yay(username)
 
     if isinstance(pkgs, str):
-        pkgs = [packages]
+        pkgs = [pkgs]
 
     util.run(["sudo", "-u", username, "yay", "-S"] + pkgs)
 
