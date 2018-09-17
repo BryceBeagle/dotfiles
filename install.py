@@ -102,7 +102,7 @@ def setup_sudoers():
         "/etc/sudoers")
 
 
-def move_dotfiles(username):
+def clone_dotfiles(dotfiles_address, username):
     git_dir = f"/home/{username}/git/"
 
     # Create git dir if necessary
@@ -112,10 +112,7 @@ def move_dotfiles(username):
     else:
         print("Git dir already exists. Continuing")
 
-    current_dotfiles_location = os.path.dirname(os.path.abspath(__file__))
-    print(f"Moving dotfiles clone from {current_dotfiles_location} "
-          f"to '{git_dir}'")
-    shutil.move(current_dotfiles_location, git_dir)
+    util.git_clone_repo(dotfiles_address, git_dir)
 
     new_dotfiles_location = os.path.join(git_dir, "dotfiles")
 
@@ -133,6 +130,8 @@ def move_dotfiles(username):
 if __name__ == '__main__':
     hostname = "griefcake"
     username = "ignormies"
+
+    dotfiles_remote_url = util.git_get_remote_url(__file__)
 
     target_drive = select_target()
     label = format_target(target_drive)
@@ -152,8 +151,8 @@ if __name__ == '__main__':
     util.set_password("root")
     util.set_password(username)
 
-    # Move dotfiles repo to user dir
-    move_dotfiles(username)
+    # Clone dotfiles repo to user dir
+    clone_dotfiles(dotfiles_remote_url, username)
 
     # Set up environment
     pacman.setup()

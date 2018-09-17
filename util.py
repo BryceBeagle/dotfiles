@@ -121,3 +121,22 @@ def recursive_chmod(path, mode, ignore_git=True):
 def lslbk():
 
     run(["lsblk", "-o", "name,label,size,mountpoint"])
+
+
+def git_get_remote_url(file_in_clone):
+
+    prev_cwd = os.getcwd()
+
+    os.chdir(os.path.dirname(file_in_clone))
+
+    remote_url = subprocess.check_output(
+        ["git", "config", "--get", "remote.origin.url"]
+    ).decode()
+
+    os.chdir(prev_cwd)
+
+    return remote_url
+
+
+def git_clone_repo(remote_url, dst):
+    run(["git", "clone", remote_url, dst])
