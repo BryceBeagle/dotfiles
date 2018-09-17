@@ -94,9 +94,9 @@ def setup_sudoers():
     # use sudo
     print("Allowing members of group sudo to use sudo")
     util.file_sub(
-        "# %sudo ALL=(ALL) ALL",
-        "%sudo ALL=(ALL) ALL",
-        "/etc/sudoers")
+        r"\# %sudo ALL=\(ALL\) ALL",
+        r"%sudo ALL=\(ALL\) ALL",
+        r"/etc/sudoers")
 
 
 def clone_dotfiles(dotfiles_address, username):
