@@ -90,13 +90,10 @@ def create_group(groupname):
 
 
 def create_user(username, sudoer=True):
-    run(["useradd", "-m",
-         "-s", "/usr/bin/zsh",
-         "-G", "sudo",
-         username])
+    run(["useradd", "-m", "-s", "/usr/bin/zsh", username])
 
     if sudoer:
-        run(["gpasswd", "-a", username])
+        run(["gpasswd", "-a", username, "sudo"])
 
 
 def set_password(username):
