@@ -16,9 +16,9 @@ def remove(path):
         pass
 
 
-def symlink(real, link, root_own=False):
+def symlink(real, link, *, link_is_dir=True, root_own=False):
     # Add name of real file to link if link is merely a directory
-    if os.path.isdir(link):
+    if link_is_dir:
         link = os.path.join(link, os.path.basename(real))
 
     # Expand potentially relative path to be absolute
