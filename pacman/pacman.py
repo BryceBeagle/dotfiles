@@ -52,6 +52,7 @@ def install_packages(pkgs: Union[str, List[str]]):
     if isinstance(pkgs, str):
         pkgs = [packages]
 
+    util.run(["pacman", "-Syu"])
     util.run(["pacman", "-S"] + pkgs)
 
 
@@ -91,6 +92,7 @@ def install_aur_packages(pkgs: Union[str, List[str]]):
     if isinstance(pkgs, str):
         pkgs = [packages]
 
+    util.run(["yay"])
     util.run(["yay", "-S"] + pkgs)
 
 
