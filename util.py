@@ -143,7 +143,7 @@ def git_get_remote_url(file_in_clone):
     return remote_url
 
 
-def git_clone_repo(remote_url, dst):
+def git_clone_repo(remote_url, dst=""):
 
     try:
         run(["pacman", "-Qi", "git"])

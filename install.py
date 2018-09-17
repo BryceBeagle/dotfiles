@@ -112,7 +112,11 @@ def clone_dotfiles(dotfiles_address, username):
     else:
         print("Git dir already exists. Continuing")
 
-    util.git_clone_repo(dotfiles_address, git_dir)
+    print(f"cd-ing to {git_dir}")
+    os.chdir(git_dir)
+
+    print(f"Cloning repo {dotfiles_address}")
+    util.git_clone_repo(dotfiles_address)
 
     new_dotfiles_location = os.path.join(git_dir, "dotfiles")
 
