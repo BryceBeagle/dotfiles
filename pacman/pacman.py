@@ -51,7 +51,7 @@ def install(pkgs: Union[str, List[str]]):
     if isinstance(pkgs, List):
         pkgs = " ".join(pkgs)
 
-        util.run(["pacman", "-S", pkgs])
+        util.run(["pacman", "-S"].extend(pkgs))
 
 
 def install_yay():
@@ -90,7 +90,7 @@ def install_aur(pkgs: Union[str, List[str]]):
     if isinstance(pkgs, List):
         pkgs = " ".join(pkgs)
 
-        util.run(["yay", "-S", pkgs])
+        util.run(["yay", "-S"].extend(pkgs))
 
 
 def enable_multilib():
