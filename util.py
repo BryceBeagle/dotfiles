@@ -119,12 +119,10 @@ def recursive_chmod(path, mode, ignore_git=True):
 
 
 def lslbk():
-
     run(["lsblk", "-o", "name,label,size,mountpoint"])
 
 
 def git_get_remote_url(file_in_clone):
-
     try:
         run(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:
@@ -143,12 +141,16 @@ def git_get_remote_url(file_in_clone):
     return remote_url
 
 
-def git_clone_repo(remote_url, dst=""):
-
+def git_clone_repo(remote_url, dst=None):
     try:
         run(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:
         run(["pacman", "-S", "git"])
 
     print(f"Cloning {remote_url} to {dst}")
-    run(["git", "clone", remote_url, dst])
+
+    commands = ["git", "clone", remote_url]
+
+    if dst:
+        commands.append(dst)
+    run(commands)
