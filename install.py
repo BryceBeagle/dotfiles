@@ -89,6 +89,10 @@ def setup_sudoers():
     except subprocess.CalledProcessError:
         util.run(["pacman", "-S", "sudo"])
 
+    # Create sudo group
+    print("Creating sudo group")
+    util.create_group("sudo")
+
     # Uncomment line of sudoers file that allows all members of group sudo to
     # use sudo
     print("Allowing members of group sudo to use sudo")

@@ -96,7 +96,6 @@ def create_user(username, sudoer=True):
          username])
 
     if sudoer:
-        run(["groupadd", "sudo"])
         run(["gpasswd", "-a", username])
 
 
