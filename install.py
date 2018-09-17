@@ -24,7 +24,8 @@ def format_target(target):
              "Are you sure you want to continue? [y/N] ").lower() != 'y':
         sys.exit("Canceling operation")
 
-    label = input("Label for new file system: ").strip()
+    label = input("Label for new file system: [arch]").strip()
+    label = label if label else "arch"
 
     print(f"Making ext4 filesystem on target '{target}' with label '{label}'")
     util.run(["mkfs.ext4", target, "-L", label])
