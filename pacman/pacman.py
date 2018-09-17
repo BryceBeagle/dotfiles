@@ -70,7 +70,7 @@ def install_yay(username):
 
     # Clone repository
     git_url = f"https://aur.archlinux.org/yay.git"
-    util.run(["git", "clone", git_url])
+    util.run(["sudo", "-u", username, "git", "clone", git_url])
 
     # cd into cloned repo
     os.chdir("yay")
