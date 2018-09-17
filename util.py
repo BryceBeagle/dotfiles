@@ -125,6 +125,11 @@ def lslbk():
 
 def git_get_remote_url(file_in_clone):
 
+    try:
+        run(["pacman", "-Qi", "git"])
+    except subprocess.CalledProcessError:
+        run(["pacman", "-S", "git"])
+
     prev_cwd = os.getcwd()
 
     os.chdir(os.path.dirname(os.path.abspath(file_in_clone)))
@@ -139,4 +144,10 @@ def git_get_remote_url(file_in_clone):
 
 
 def git_clone_repo(remote_url, dst):
+
+    try:
+        run(["pacman", "-Qi", "git"])
+    except subprocess.CalledProcessError:
+        run(["pacman", "-S", "git"])
+
     run(["git", "clone", remote_url, dst])
