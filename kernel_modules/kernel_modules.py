@@ -1,12 +1,12 @@
 import os
-import subprocess
 
 import util
 
 
 def setup():
     print("Symlinking no-psmouse.conf to /etc/modprobe.d/")
-    util.symlink("no-psmouse.conf", "/etc/modprobe.d/", root_own=True)
+    util.symlink("kernel_modules/no-psmouse.conf", "/etc/modprobe.d/",
+                 root_own=True)
 
     if not os.path.ismount("/boot"):
         util.run(["mount", "-a"])

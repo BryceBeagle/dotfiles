@@ -8,4 +8,4 @@ def setup():
     shutil.move("/etc/fstab", "/etc/fstab.bak")
 
     print("Symlinking fstab to /etc/fstab")
-    util.symlink("fstab", "/etc", root_own=True)
+    util.symlink("fstab/fstab", "/etc", root_own=True)

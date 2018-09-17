@@ -8,8 +8,10 @@ from pacman.packages import packages, Repo
 
 def setup():
     print("Symlinking paccache hooks to /etc/pacman.d/")
-    util.symlink("paccache-remove.hook", "/etc/pacman.d/hooks/", root_own=True)
-    util.symlink("paccache-upgrade.hook", "/etc/pacman.d/hooks/", root_own=True)
+    util.symlink("pacman/paccache-remove.hook", "/etc/pacman.d/hooks/",
+                 root_own=True)
+    util.symlink("pacman/paccache-upgrade.hook", "/etc/pacman.d/hooks/",
+                 root_own=True)
 
     official_packages = [pkg for pkg, repo in packages if repo is Repo.official]
     aur_packages = [pkg for pkg, repo in packages if repo is Repo.aur]
