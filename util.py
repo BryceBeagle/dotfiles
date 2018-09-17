@@ -7,12 +7,15 @@ from typing import List
 
 def run(command, repeat=False):
 
-    # If repeat is True, keep trying
-    while True:
-        subprocess.run(command, check=True)
-        if not repeat:
-            break
+    repeat_ = True
 
+    # If repeat is True, keep trying. Useful if user makes a mistake
+    while repeat_:
+        try:
+            subprocess.run(command, check=True)
+            repeat_ = False
+        except subprocess.CalledProcessError:
+            repeat_ = repeat
 
 def remove(path):
     try:
