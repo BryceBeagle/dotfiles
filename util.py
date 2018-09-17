@@ -27,7 +27,7 @@ def symlink(real, link, root_own=False):
     # Create directory link will reside in if it does not exist
     link_dir = os.path.dirname(link)
     if not os.path.exists(link_dir):
-        os.mkdir(link_dir)
+        os.makedirs(link_dir)
 
     # Delete target if it exists
     remove(link)
