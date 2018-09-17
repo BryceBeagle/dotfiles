@@ -21,7 +21,7 @@ def setup(username):
     update()
 
     print("Installing official repo packages")
-    install_packages(official_packages)
+    # install_packages(official_packages)
 
     print("Installing yay")
     install_yay(username)
