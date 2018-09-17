@@ -89,7 +89,7 @@ def install_aur_packages(pkgs: Union[str, List[str]], username):
     if isinstance(pkgs, str):
         pkgs = [packages]
 
-    util.run(["yay", "-S"] + pkgs)
+    util.run(["sudo", "-u", username, "yay", "-S"] + pkgs)
 
 
 def enable_multilib():
