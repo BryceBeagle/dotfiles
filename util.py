@@ -136,7 +136,7 @@ def git_get_remote_url(file_in_clone):
 
     remote_url = subprocess.check_output(
         ["git", "config", "--get", "remote.origin.url"]
-    ).decode()
+    ).decode().strip()
 
     os.chdir(prev_cwd)
 
@@ -150,4 +150,5 @@ def git_clone_repo(remote_url, dst):
     except subprocess.CalledProcessError:
         run(["pacman", "-S", "git"])
 
+    print(f"Cloning {remote_url} to {dst}")
     run(["git", "clone", remote_url, dst])
