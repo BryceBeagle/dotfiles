@@ -39,7 +39,7 @@ def setup(username):
 
 def pacstrap():
     print("Running pacstrap")
-    util.run(["pacstrap", "-i", "/mnt/"])
+    util.run(["pacstrap", "-i", "/mnt/", "base", "base-devel"])
 
 
 def update():
@@ -57,11 +57,9 @@ def install_packages(pkgs: Union[str, List[str]]):
 
 
 def install_yay(username):
-    # Should be installed by nature of having this file, but just in case
-    try:
-        util.run(["pacman", "-Qi", "git"])
-    except subprocess.CalledProcessError:
-        install_packages("git")
+
+    # Dependencies for the command
+    install_packages(["git", "go", "binutils"])
 
     working_dir = os.getcwd()
 

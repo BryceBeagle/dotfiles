@@ -40,10 +40,8 @@ def mount_target(target):
 
 
 def select_mirrors():
-    try:
-        util.run(["pacman", "-Qi", "reflector"])
-    except subprocess.CalledProcessError:
-        util.run(["pacman", "-S", "reflector"])
+
+    pacman.pacman.install_packages("reflector")
 
     print("Ranking top 5 mirrors")
     util.run(["reflector",
@@ -86,10 +84,7 @@ def setup_hostname(hostname):
 def setup_sudoers():
     """Allow use of sudo"""
 
-    try:
-        util.run(["pacman", "-Qi", "sudo"])
-    except subprocess.CalledProcessError:
-        util.run(["pacman", "-S", "sudo"])
+    pacman.pacman.install_packages("sudo")
 
     # Create sudo group
     print("Creating sudo group")
