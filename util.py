@@ -5,8 +5,13 @@ import subprocess
 from typing import List
 
 
-def run(command):
-    subprocess.run(command, check=True)
+def run(command, repeat=False):
+
+    # If repeat is True, keep trying
+    while True:
+        subprocess.run(command, check=True)
+        if not repeat:
+            break
 
 
 def remove(path):
@@ -98,7 +103,7 @@ def create_user(username, sudoer=True):
 
 def set_password(username):
     print(f"Setting password for user {username}")
-    run(["passwd", username])
+    run(["passwd", username], repeat=True)
 
 
 def recursive_chown(path, username):
