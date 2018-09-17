@@ -21,20 +21,20 @@ def setup():
     update()
 
     print("Installing official repo packages")
-    install(official_packages)
+    install_packages(official_packages)
 
     print("Installing yay")
     install_yay()
     if aur_packages:
         print("Installing AUR packages")
-        install_aur(aur_packages)
+        install_aur_packages(aur_packages)
 
     if multilib_packages:
         print("Enabling multilib")
         enable_multilib()
 
         print("Installing multilib packages")
-        install(multilib_packages)
+        install_packages(multilib_packages)
 
 
 def pacstrap():
@@ -47,11 +47,12 @@ def update():
     util.run(["pacman", "-Syu"])
 
 
-def install(pkgs: Union[str, List[str]]):
-    if isinstance(pkgs, List):
-        pkgs = " ".join(pkgs)
+def install_packages(pkgs: Union[str, List[str]]):
 
-        util.run(["pacman", "-S"].extend(pkgs))
+    if isinstance(pkgs, str):
+        pkgs = [packages]
+
+    util.run(["pacman", "-S"] + pkgs)
 
 
 def install_yay():
@@ -59,7 +60,7 @@ def install_yay():
     try:
         util.run(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:
-        install("git")
+        install_packages("git")
 
     working_dir = os.getcwd()
 
@@ -80,17 +81,17 @@ def install_yay():
     os.chdir(working_dir)
 
 
-def install_aur(pkgs: Union[str, List[str]]):
+def install_aur_packages(pkgs: Union[str, List[str]]):
     # Install yay if we don't already have it
     try:
         util.run(["pacman", "-Qi", "yay"])
     except subprocess.CalledProcessError:
         install_yay()
 
-    if isinstance(pkgs, List):
-        pkgs = " ".join(pkgs)
+    if isinstance(pkgs, str):
+        pkgs = [packages]
 
-        util.run(["yay", "-S"].extend(pkgs))
+    util.run(["yay", "-S"] + pkgs)
 
 
 def enable_multilib():
