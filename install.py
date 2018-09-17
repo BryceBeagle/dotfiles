@@ -103,7 +103,7 @@ def setup_sudoers():
 
 
 def move_dotfiles(username):
-    git_dir = f"~{username}/git/"
+    git_dir = f"/home/{username}/git/"
 
     # Create git dir if necessary
     if not os.path.exists(git_dir):
