@@ -161,7 +161,7 @@ if __name__ == '__main__':
     clone_dotfiles(dotfiles_remote_url, username)
 
     # Set up environment
-    pacman.setup()
+    pacman.setup(username)
     config.setup(username)
     fstab.setup()
     egpu.setup()

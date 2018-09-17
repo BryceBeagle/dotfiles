@@ -6,7 +6,7 @@ import util
 from pacman.packages import packages, Repo
 
 
-def setup():
+def setup(username):
     print("Symlinking paccache hooks to /etc/pacman.d/")
     util.symlink("pacman/paccache-remove.hook", "/etc/pacman.d/hooks/",
                  root_own=True)
@@ -24,10 +24,10 @@ def setup():
     install_packages(official_packages)
 
     print("Installing yay")
-    install_yay()
+    install_yay(username)
     if aur_packages:
         print("Installing AUR packages")
-        install_aur_packages(aur_packages)
+        install_aur_packages(aur_packages, username)
 
     if multilib_packages:
         print("Enabling multilib")
@@ -56,7 +56,7 @@ def install_packages(pkgs: Union[str, List[str]]):
     util.run(["pacman", "-S"] + pkgs)
 
 
-def install_yay():
+def install_yay(username):
     # Should be installed by nature of having this file, but just in case
     try:
         util.run(["pacman", "-Qi", "git"])
@@ -76,23 +76,23 @@ def install_yay():
     os.chdir("yay")
 
     # Install package
-    util.run(["makepkg", "-si"])
+    util.run(["sudo", "-u", username, "makepkg", "-si"])
 
     # Restore original working directory
     os.chdir(working_dir)
 
 
-def install_aur_packages(pkgs: Union[str, List[str]]):
+def install_aur_packages(pkgs: Union[str, List[str]], username):
     # Install yay if we don't already have it
     try:
         util.run(["pacman", "-Qi", "yay"])
     except subprocess.CalledProcessError:
-        install_yay()
+        install_yay(username)
 
     if isinstance(pkgs, str):
         pkgs = [packages]
 
-    util.run(["yay"])
+    util.run(["su", "-u", username, "yay"])
     util.run(["yay", "-S"] + pkgs)
 
 
