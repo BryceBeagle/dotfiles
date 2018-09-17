@@ -97,6 +97,7 @@ def create_user(username, sudoer=True):
 
 
 def set_password(username):
+    print(f"Setting password for user {username}")
     run(["passwd", username])
 
 
