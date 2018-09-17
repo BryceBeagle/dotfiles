@@ -127,7 +127,7 @@ def git_get_remote_url(file_in_clone):
 
     prev_cwd = os.getcwd()
 
-    os.chdir(os.path.dirname(file_in_clone))
+    os.chdir(os.path.dirname(os.path.abspath(file_in_clone)))
 
     remote_url = subprocess.check_output(
         ["git", "config", "--get", "remote.origin.url"]
