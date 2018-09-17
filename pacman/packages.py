@@ -18,9 +18,9 @@ packages = [
     ("paper-icon-theme-git", Repo.aur),
 
     # Editors
-    ("nvim", Repo.official),
+    ("neovim", Repo.official),
     ("pycharm-professional", Repo.aur),
-    ("clion", Repo.official),
+    ("clion", Repo.aur),
     ("bcompare", Repo.aur),
 
     # Browser
