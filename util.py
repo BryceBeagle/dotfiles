@@ -133,7 +133,7 @@ def git_get_remote_url(file_in_clone):
     try:
         run(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:
-        run(["pacman", "-S", "--noconfirm", "git"])
+        run(["pacman", "-S", "--noconfirm", "--needed", "git"])
 
     prev_cwd = os.getcwd()
 
@@ -153,7 +153,7 @@ def git_clone_repo(remote_url, dst=None):
         run(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:
         print("Installing git package")
-        run(["pacman", "-S", "--noconfirm", "git"])
+        run(["pacman", "-S", "--noconfirm", "--needed", "git"])
 
     print(f"Cloning {remote_url} to {dst}")
 

@@ -53,7 +53,7 @@ def install_packages(pkgs: List[Union[str, Package]]):
     if isinstance(pkgs, list):
         pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
-    util.run(["pacman", "-S", "--noconfirm"] + pkgs)
+    util.run(["pacman", "-S", "--noconfirm", "--needed"] + pkgs)
 
 
 def install_yay(username):
