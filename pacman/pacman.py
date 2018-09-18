@@ -39,7 +39,7 @@ def setup(username):
 
 def pacstrap():
     print("Running pacstrap")
-    util.run(["pacstrap", "-i", "/mnt/", "base", "base-devel"])
+    util.run(["pacstrap", "/mnt/", "base", "base-devel"])
 
 
 def update():
