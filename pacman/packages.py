@@ -29,13 +29,13 @@ packages = [Package(
         "xorg-server",
         "budgie-desktop",
         "arc-gtk-theme",
-        ("paper-icon-theme-git", Repo.aur),
+        # ("paper-icon-theme-git", Repo.aur),
 
         # Editors
         "neovim",
         # ("pycharm-professional", Repo.aur),
-        ("clion", Repo.aur),
-        ("bcompare", Repo.aur),
+        # ("clion", Repo.aur),
+        # ("bcompare", Repo.aur),
 
         # Browser
         "chromium",
