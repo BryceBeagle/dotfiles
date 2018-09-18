@@ -27,7 +27,7 @@ def setup(username):
     install_yay(username)
     if aur_packages:
         print("Installing AUR packages")
-        install_aur_packages(aur_packages, username)
+        # install_aur_packages(aur_packages, username)
 
     if multilib_packages:
         print("Enabling multilib")
