@@ -13,8 +13,7 @@ def run(command, repeat=False):
             break
         except subprocess.CalledProcessError:
             if not repeat:
-                break
-            raise
+                raise
 
 
 def remove(path):
