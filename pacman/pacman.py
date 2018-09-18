@@ -53,7 +53,7 @@ def install_packages(pkgs: List[Union[str, Package]]):
     if isinstance(pkgs, list):
         pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
-    util.run(["pacman", "-S"] + pkgs)
+    util.run(["pacman", "-S", "--noconfirm"] + pkgs)
 
 
 def install_yay(username):
@@ -97,7 +97,13 @@ def install_aur_packages(pkgs: List[Union[str, Package]], username):
     if isinstance(pkgs, list):
         pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
-    util.run(["sudo", "-u", username, "yay", "-S"] + pkgs)
+    util.run(["sudo", "-u", username,
+              "yay",
+              "--pgpfetch", "--sudoloop", "--noconfirm",
+              "--answerclean", "N",
+              "--answerdiff", "N",
+              "--answerupgrade", "N",
+              "-S"] + pkgs)
 
 
 def enable_multilib():

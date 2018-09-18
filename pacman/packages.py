@@ -49,7 +49,7 @@ packages = [Package(
 
         # Dell XPS 9550
         ("b43-firmware", Repo.aur),
-        ("bluez-utils-compat", Repo.aur, ["06CA9F5D1DCF2659"]),
+        ("bluez-utils-compat", Repo.aur),
         ("bcm20703a1-firmware", Repo.aur),  # Bluetooth driver
         "nvidia",  # Graphics card
         # "acpi",  # Prevents some startup error messages
