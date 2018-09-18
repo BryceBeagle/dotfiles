@@ -68,12 +68,12 @@ packages = [Package(
         # Fonts
         "noto-fonts",
         "noto-fonts-emoji",
-        ("noto-fonts-sc", Repo.aur),  # Chinese symbols
+        # ("noto-fonts-sc", Repo.aur),  # Chinese symbols
         "ttf-hack",  # Terminal font
 
         # Other
         "pacman-contrib",  # Brings in paccache
-        ("eagle", Repo.aur),
+        # ("eagle", Repo.aur),
         "arandr",
         "vlc",
         "sl",

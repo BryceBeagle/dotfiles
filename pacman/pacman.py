@@ -90,6 +90,7 @@ def install_aur_packages(pkgs: List[Union[str, Package]], username):
     for pkg in pkgs:
         if isinstance(pkg, Package):
             if pkg.gpg_keys:
+                print(f"Receiving key={pkg.gpg_keys}")
                 util.recv_gpg_keys(pkg.gpg_keys)
 
     if isinstance(pkgs, str):
