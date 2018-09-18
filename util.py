@@ -6,16 +6,16 @@ from typing import List
 
 
 def run(command, repeat=False):
-
-    repeat_ = True
-
     # If repeat is True, keep trying. Useful if user makes a mistake
-    while repeat_:
+    while True:
         try:
             subprocess.run(command, check=True)
-            repeat_ = False
+            break
         except subprocess.CalledProcessError:
-            repeat_ = repeat
+            if not repeat:
+                break
+            raise
+
 
 def remove(path):
     try:
@@ -153,6 +153,7 @@ def git_clone_repo(remote_url, dst=None):
     try:
         run(["pacman", "-Qi", "git"])
     except subprocess.CalledProcessError:
+        print("Installing git package")
         run(["pacman", "-S", "git"])
 
     print(f"Cloning {remote_url} to {dst}")
