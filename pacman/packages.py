@@ -33,7 +33,7 @@ packages = [Package(
 
         # Editors
         "neovim",
-        ("pycharm-professional", Repo.aur),
+        # ("pycharm-professional", Repo.aur),
         ("clion", Repo.aur),
         ("bcompare", Repo.aur),
 
@@ -82,4 +82,5 @@ packages = [Package(
         "intel-ucode",
         "sudo",
 
-    ]]
+    ]
+]
