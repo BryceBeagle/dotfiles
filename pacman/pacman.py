@@ -58,7 +58,7 @@ def install_packages(pkgs: Union[str, List[str]]):
 def install_yay(username):
 
     # Dependencies for the command
-    install_packages(["git", "go", "binutils"])
+    install_packages(["git", "binutils"])
 
     working_dir = os.getcwd()
 
