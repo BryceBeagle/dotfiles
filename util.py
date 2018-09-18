@@ -164,5 +164,5 @@ def git_clone_repo(remote_url, dst=None):
     run(commands)
 
 
-def recv_gpg_keys(keys: List[str]):
-    run(["gpg", "--recv-keys"] + keys)
+def recv_gpg_keys(username: str, keys: List[str]):
+    run(["sudo", "-u", username, "gpg", "--recv-keys"] + keys)
