@@ -162,3 +162,7 @@ def git_clone_repo(remote_url, dst=None):
     if dst:
         commands.append(dst)
     run(commands)
+
+
+def recv_gpg_keys(keys: List[str]):
+    run(["gpg", "--recv-keys"] + keys)

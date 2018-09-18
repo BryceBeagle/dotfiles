@@ -1,71 +1,85 @@
+from dataclasses import dataclass, field
 from enum import Enum
+from typing import List
 
 # noinspection PyArgumentList
 Repo = Enum("Repo", ["official", "multilib", "aur"])
 
-packages = [
 
-    # Prerequisites
-    ("wpa_supplicant", Repo.official),
-    ("dialog", Repo.official),
-    ("openssh", Repo.official),
-    ("git", Repo.official),
+@dataclass
+class Package:
+    name: str
+    repo: Repo = Repo.official
+    gpg_keys: List[str] = field(default_factory=lambda: [])
 
-    # Desktop Environment
-    ("xorg-server", Repo.official),
-    ("budgie-desktop", Repo.official),
-    ("arc-gtk-theme", Repo.official),
-    ("paper-icon-theme-git", Repo.aur),
 
-    # Editors
-    ("neovim", Repo.official),
-    ("pycharm-professional", Repo.aur),
-    ("clion", Repo.aur),
-    ("bcompare", Repo.aur),
+packages = [Package(
+    *package
+    if isinstance(package, tuple)
+    else (package,))
+    for package in [
 
-    # Browser
-    ("chromium", Repo.official),
+        # Prerequisites
+        "wpa_supplicant",
+        "dialog",
+        "openssh",
+        "git",
 
-    # Steam
-    # ("steam", Repo.multilib),
-    # ("steam-native-runtime", Repo.multilib),
-    # ("lib32-gtk-engines", Repo.aur),
-    # ("lib32-gtk-engine-murrine", Repo.aur),
-    # ("lib32-gnome-themes-standard", Repo.aur),
+        # Desktop Environment
+        "xorg-server",
+        "budgie-desktop",
+        "arc-gtk-theme",
+        ("paper-icon-theme-git", Repo.aur),
 
-    # Dell XPS 9550
-    ("b43-firmware", Repo.aur),
-    ("bluez-utils-compat", Repo.aur),
-    ("bcm20703a1-firmware", Repo.aur),  # Bluetooth driver
-    ("nvidia", Repo.official),          # Graphics card
-    # ("acpi", Repo.official),            # Prevents some startup error messages
+        # Editors
+        "neovim",
+        ("pycharm-professional", Repo.aur),
+        ("clion", Repo.aur),
+        ("bcompare", Repo.aur),
 
-    # Networking
-    ("wpa_supplicant", Repo.official),
-    ("private-internet-access-vpn", Repo.aur),
+        # Browser
+        "chromium",
 
-    # Communication
-    ("slack-desktop", Repo.aur),
+        # Steam
+        # ("steam", Repo.multilib),
+        # ("steam-native-runtime", Repo.multilib),
+        # ("lib32-gtk-engines", Repo.aur),
+        # ("lib32-gtk-engine-murrine", Repo.aur),
+        # ("lib32-gnome-themes-standard", Repo.aur),
 
-    # ZSH
-    ("zsh", Repo.official),
-    ("antigen-git", Repo.aur),
+        # Dell XPS 9550
+        ("b43-firmware", Repo.aur),
+        ("bluez-utils-compat", Repo.aur, ["06CA9F5D1DCF2659"]),
+        ("bcm20703a1-firmware", Repo.aur),  # Bluetooth driver
+        "nvidia",  # Graphics card
+        # "acpi",  # Prevents some startup error messages
 
-    # Fonts
-    ("noto-fonts", Repo.official),
-    ("noto-fonts-emoji", Repo.official),
-    ("noto-fonts-sc", Repo.aur),  # Chinese symbols
-    ("ttf-hack", Repo.official),  # Terminal font
+        # Networking
+        "wpa_supplicant",
+        ("private-internet-access-vpn", Repo.aur),
 
-    # Other
-    ("pacman-contrib", Repo.official),  # Brings in paccache
-    ("eagle", Repo.aur),
-    ("arandr", Repo.official),
-    ("vlc", Repo.official),
-    ("sl", Repo.official),
-    ("gparted", Repo.official),
-    ("deluge", Repo.official),
-    ("intel-ucode", Repo.official),
-    ("sudo", Repo.official),
+        # Communication
+        ("slack-desktop", Repo.aur),
 
-]
+        # ZSH
+        "zsh",
+        ("antigen-git", Repo.aur),
+
+        # Fonts
+        "noto-fonts",
+        "noto-fonts-emoji",
+        ("noto-fonts-sc", Repo.aur),  # Chinese symbols
+        "ttf-hack",  # Terminal font
+
+        # Other
+        "pacman-contrib",  # Brings in paccache
+        ("eagle", Repo.aur),
+        "arandr",
+        "vlc",
+        "sl",
+        "gparted",
+        "deluge",
+        "intel-ucode",
+        "sudo",
+
+    ]]

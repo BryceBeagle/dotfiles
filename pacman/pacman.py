@@ -3,7 +3,7 @@ import subprocess
 from typing import List, Union
 
 import util
-from pacman.packages import packages, Repo
+from pacman.packages import packages, Package, Repo
 
 
 def setup(username):
@@ -13,9 +13,9 @@ def setup(username):
     util.symlink("pacman/paccache-upgrade.hook", "/etc/pacman.d/hooks/",
                  root_own=True)
 
-    official_packages = [pkg for pkg, repo in packages if repo is Repo.official]
-    aur_packages = [pkg for pkg, repo in packages if repo is Repo.aur]
-    multilib_packages = [pkg for pkg, repo in packages if repo is Repo.multilib]
+    official_packages = [pkg for pkg in packages if pkg.repo is Repo.official]
+    aur_packages = [pkg for pkg in packages if pkg.repo is Repo.aur]
+    multilib_packages = [pkg for pkg in packages if pkg.repo is Repo.multilib]
 
     print("Updating packages")
     update()
@@ -47,16 +47,16 @@ def update():
     util.run(["pacman", "-Syu"])
 
 
-def install_packages(pkgs: Union[str, List[str]]):
-
+def install_packages(pkgs: List[Union[str, Package]]):
     if isinstance(pkgs, str):
         pkgs = [pkgs]
+    if isinstance(pkgs, list):
+        pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
     util.run(["pacman", "-S"] + pkgs)
 
 
 def install_yay(username):
-
     # Dependencies for the command
     install_packages(["git", "binutils"])
 
@@ -79,15 +79,23 @@ def install_yay(username):
     os.chdir(working_dir)
 
 
-def install_aur_packages(pkgs: Union[str, List[str]], username):
+def install_aur_packages(pkgs: List[Union[str, Package]], username):
     # Install yay if we don't already have it
     try:
         util.run(["pacman", "-Qi", "yay"])
     except subprocess.CalledProcessError:
         install_yay(username)
 
+    print("Installing gpg keys if necessary")
+    for pkg in pkgs:
+        if isinstance(pkg, Package):
+            if pkg.gpg_keys:
+                util.recv_gpg_keys(pkg.gpg_keys)
+
     if isinstance(pkgs, str):
         pkgs = [pkgs]
+    if isinstance(pkgs, list):
+        pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
     util.run(["sudo", "-u", username, "yay", "-S"] + pkgs)
 
