@@ -94,7 +94,7 @@ def setup_sudoers():
     # use sudo
     print("Allowing members of group sudo to use sudo")
     util.file_sub(
-        r"\# %sudo ALL=\(ALL\) ALL",
+        r"\#\s+%sudo\s+ALL=\(ALL\)\s+ALL",
         r"%sudo ALL=\(ALL\) ALL",
         r"/etc/sudoers")
 
