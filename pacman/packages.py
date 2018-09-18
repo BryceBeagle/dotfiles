@@ -56,7 +56,7 @@ packages = [Package(
 
         # Networking
         "wpa_supplicant",
-        ("private-internet-access-vpn", Repo.aur),
+        # ("private-internet-access-vpn", Repo.aur),
 
         # Communication
         ("slack-desktop", Repo.aur),
