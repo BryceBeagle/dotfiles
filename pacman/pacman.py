@@ -73,7 +73,7 @@ def install_yay(username):
     os.chdir("yay")
 
     # Install package
-    util.run(["sudo", "-u", username, "makepkg", "-si"])
+    util.run(["sudo", "-u", username, "makepkg", "-si", "--noconfirm"])
 
     # Restore original working directory
     os.chdir(working_dir)
