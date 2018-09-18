@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# import locale
+import locale
 import os
 import shutil
 import subprocess
