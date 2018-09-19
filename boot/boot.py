@@ -22,7 +22,7 @@ def create_loader_conf(conf_name, default):
 
 def create_loader_entry(partition_label, install_dir, conf_name):
     entry_conf = f"/boot/loader/entries/{conf_name}.conf"
-    shutil.copyfile("arch.conf", entry_conf)
+    shutil.copyfile("boot/arch.conf", entry_conf)
     util.file_sub("%INSTALL_DIR%", install_dir, entry_conf)
     util.file_sub("%PART_LABEL%", partition_label, entry_conf)
 
