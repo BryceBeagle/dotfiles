@@ -6,7 +6,7 @@ import util
 
 def ensure_boot_mounted():
     if not os.path.ismount("/boot"):
-        util.run(["mount", "-a"])
+        util.run(["mount", "-L", "BOOT", "/boot"])
     assert os.path.ismount("/boot"), \
         "Error: Could not copy systemd-boot configuration: " \
         "/boot is not mounted"

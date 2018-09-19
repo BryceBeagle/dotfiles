@@ -7,7 +7,7 @@ from pacman.packages import packages, Package, Repo
 from boot import boot
 
 
-def setup(username):
+def setup(boot_partition, username):
     print("Symlinking paccache hooks to /etc/pacman.d/")
     util.symlink("pacman/paccache-remove.hook", "/etc/pacman.d/hooks/",
                  root_own=True)
@@ -19,6 +19,7 @@ def setup(username):
     multilib_packages = [pkg for pkg in packages if pkg.repo is Repo.multilib]
 
     print("Ensuring boot mounted")
+    breakpoint()
     boot.ensure_boot_mounted()
 
     print("Updating packages")
