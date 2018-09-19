@@ -19,7 +19,6 @@ def setup(username):
     multilib_packages = [pkg for pkg in packages if pkg.repo is Repo.multilib]
 
     print("Ensuring boot mounted")
-    breakpoint()
     boot.ensure_boot_mounted()
 
     print("Updating packages")
