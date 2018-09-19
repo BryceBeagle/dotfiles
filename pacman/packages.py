@@ -27,6 +27,7 @@ packages = [Package(
 
         # Desktop Environment
         "xorg-server",
+        "xorg-xinit",
         "budgie-desktop",
         "arc-gtk-theme",
         ("paper-icon-theme-git", Repo.aur),
@@ -56,12 +57,14 @@ packages = [Package(
 
         # Networking
         "wpa_supplicant",
+        "networkmanager",
         # ("private-internet-access-vpn", Repo.aur),
 
         # Communication
         ("slack-desktop", Repo.aur),
 
         # ZSH
+        "gnome-terminal"
         "zsh",
         ("antigen-git", Repo.aur),
 
@@ -81,6 +84,6 @@ packages = [Package(
         "deluge",
         "intel-ucode",
         "sudo",
-
+        "python-virtualenv"
     ]
 ]
