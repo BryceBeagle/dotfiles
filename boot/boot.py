@@ -43,7 +43,7 @@ def setup(partition_label, conf_name="arch", default=True):
     os.makedirs(f"/boot/{install_dir}", exist_ok=True)
 
     print(f"Installing systemd-boot to /boot/{install_dir}")
-    util.run([f"bootctl", "install"])
+    util.run([f"bootctl", f"--path=/boot/{install_dir}", "install"])
 
     print("Creating loader.conf")
     create_loader_conf(conf_name, default)
