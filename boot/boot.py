@@ -16,7 +16,7 @@ def create_loader_conf(conf_name, default):
     loader_conf = f"/boot/loader/loader.conf"
     if not os.path.exists(loader_conf) or default:
         # Create loader.conf
-        shutil.copyfile("loader.conf", loader_conf)
+        shutil.copyfile("boot/loader.conf", loader_conf)
         util.file_sub("%DEFAULT_CONF%", conf_name, loader_conf)
 
 
