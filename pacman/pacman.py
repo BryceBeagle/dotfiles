@@ -4,6 +4,7 @@ from typing import List, Union
 
 import util
 from pacman.packages import packages, Package, Repo
+from boot import boot
 
 
 def setup(username):
@@ -16,6 +17,9 @@ def setup(username):
     official_packages = [pkg for pkg in packages if pkg.repo is Repo.official]
     aur_packages = [pkg for pkg in packages if pkg.repo is Repo.aur]
     multilib_packages = [pkg for pkg in packages if pkg.repo is Repo.multilib]
+
+    print("Ensuring boot mounted")
+    boot.ensure_boot_mounted()
 
     print("Updating packages")
     update()
