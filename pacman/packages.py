@@ -29,13 +29,13 @@ packages = [Package(
         "xorg-server",
         "budgie-desktop",
         "arc-gtk-theme",
-        # ("paper-icon-theme-git", Repo.aur),
+        ("paper-icon-theme-git", Repo.aur),
 
         # Editors
         "neovim",
-        # ("pycharm-professional", Repo.aur),
-        # ("clion", Repo.aur),
-        # ("bcompare", Repo.aur),
+        ("pycharm-professional", Repo.aur),
+        ("clion", Repo.aur),
+        ("bcompare", Repo.aur),
 
         # Browser
         "chromium",
@@ -68,12 +68,12 @@ packages = [Package(
         # Fonts
         "noto-fonts",
         "noto-fonts-emoji",
-        # ("noto-fonts-sc", Repo.aur),  # Chinese symbols
+        ("noto-fonts-sc", Repo.aur),  # Chinese symbols
         "ttf-hack",  # Terminal font
 
         # Other
         "pacman-contrib",  # Brings in paccache
-        # ("eagle", Repo.aur),
+        ("eagle", Repo.aur),
         "arandr",
         "vlc",
         "sl",

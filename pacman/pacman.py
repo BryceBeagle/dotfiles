@@ -25,13 +25,13 @@ def setup(username):
     update()
 
     print("Installing official repo packages")
-    # install_packages(official_packages)
+    install_packages(official_packages)
 
     print("Installing yay")
     install_yay(username)
     if aur_packages:
         print("Installing AUR packages")
-        # install_aur_packages(aur_packages, username)
+        install_aur_packages(aur_packages, username)
 
     if multilib_packages:
         print("Enabling multilib")
