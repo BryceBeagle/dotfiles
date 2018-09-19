@@ -38,8 +38,9 @@ def setup(partition_label, conf_name="arch", default=True):
 
     ensure_boot_mounted()
 
-    install_dir = f"installs/{conf_name}/"
-    print(f"Creating directory /boot/'{install_dir}' for bootloader")
+    # install_dir = f"installs/{conf_name}/"
+    install_dir = ""  # install to root of boot for now
+    print(f"Creating directory /boot/{install_dir} for bootloader")
     os.makedirs(f"/boot/{install_dir}", exist_ok=True)
 
     print(f"Installing systemd-boot to /boot/{install_dir}")
