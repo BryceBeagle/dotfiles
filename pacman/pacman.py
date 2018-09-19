@@ -7,7 +7,7 @@ from pacman.packages import packages, Package, Repo
 from boot import boot
 
 
-def setup(boot_partition, username):
+def setup(username):
     print("Symlinking paccache hooks to /etc/pacman.d/")
     util.symlink("pacman/paccache-remove.hook", "/etc/pacman.d/hooks/",
                  root_own=True)
