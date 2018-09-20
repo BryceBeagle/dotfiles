@@ -27,7 +27,7 @@ def setup(username):
     # Remove ucode file if installing ucode package
     # Not doing this will cause pacman to error out
     if any(pkg.name == "intel-ucode" for pkg in official_packages):
-        ucode_path = "/boot/intel_ucode.img"
+        ucode_path = "/boot/intel-ucode.img"
         if os.path.exists(ucode_path):
             os.remove(ucode_path)
 
