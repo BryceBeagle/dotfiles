@@ -64,7 +64,7 @@ packages = [Package(
         ("slack-desktop", Repo.aur),
 
         # ZSH
-        "gnome-terminal"
+        "gnome-terminal",
         "zsh",
         ("antigen-git", Repo.aur),
 
