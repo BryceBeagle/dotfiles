@@ -38,6 +38,10 @@ packages = [Package(
         ("clion", Repo.aur),
         ("bcompare", Repo.aur),
 
+        # Programming Tools
+        "python-virtualenv",
+        "python-virtualenvwrapper",
+
         # Browser
         "chromium",
 
@@ -84,6 +88,5 @@ packages = [Package(
         "deluge",
         "intel-ucode",
         "sudo",
-        "python-virtualenv"
     ]
 ]
