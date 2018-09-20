@@ -2,8 +2,6 @@
 
 import locale
 import os
-import shutil
-import subprocess
 import sys
 
 import boot
@@ -12,6 +10,7 @@ import egpu
 import fstab
 import kernel_modules
 import pacman
+import services
 import util
 
 
@@ -166,3 +165,6 @@ if __name__ == '__main__':
 
     # Set up bootloader
     boot.setup(partition_label=label, conf_name="arch")
+
+    # Enable services
+    services.setup()
