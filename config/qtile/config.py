@@ -51,23 +51,23 @@ def make_screen(systray=False):
             inactive=COLS["dark_2"],  # Inactive group font color
             active=COLS["light_2"],  # Active group font color
             disable_drag=True,
-            borderwidth=2,
-            **FONT_PARAMS,
+            borderwidth=2
         ),
         # Marker for the end of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
             font="Arial", foreground=COLS["dark_4"],
             text="◤"#, fontsize=50, padding=-5
         ),
+
         # Show the title for the focused window
-        widget.WindowName(**FONT_PARAMS),
+        widget.WindowName(),
+
         # Allow for quick command execution
         widget.Prompt(
             cursor_color=COLS["light_3"],
             # ignore_dups_history=True,
             bell_style="visual",
-            prompt="λ : ",
-            **FONT_PARAMS
+            prompt="λ : "
         ),
 
         _separator(),
