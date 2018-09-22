@@ -47,9 +47,9 @@ def make_screen(systray=False):
             highlight_color=COLS["blue_0"],
             urgent_border=COLS["red_1"],
             background=COLS["dark_4"],
-            highlight_method="line",
-            inactive=COLS["dark_2"],
-            active=COLS["light_2"],
+            highlight_method="block",  # Highlight (border, block, text, or line)
+            inactive=COLS["dark_2"],  # Inactive group font color
+            active=COLS["light_2"],  # Active group font color
             disable_drag=True,
             borderwidth=2,
             **FONT_PARAMS,
