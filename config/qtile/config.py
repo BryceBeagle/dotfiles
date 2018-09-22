@@ -12,14 +12,14 @@ from libqtile import bar, widget
 from libqtile.config import Screen, hook
 
 # Settings/helpers
-from .settings import COLS, FONT_PARAMS, WITH_SYS_TRAY
-from .helpers import run_script
+from settings import COLS, FONT_PARAMS, WITH_SYS_TRAY
+from helpers import run_script
 
 # Import the parts of my config defined in other files
-from .layouts import layouts, floating_layout    # NOQA
-from .bindings import keys, mouse                # NOQA
-from .groups import groups                       # NOQA
-from .widgets import ShellScript
+from layouts import layouts, floating_layout    # NOQA
+from bindings import keys, mouse                # NOQA
+from groups import groups                       # NOQA
+from widgets import ShellScript
 
 
 # ----------------------------------------------------------------------------

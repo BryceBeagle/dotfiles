@@ -25,9 +25,9 @@ may be something to do with my own ez_keys function...!)
 from libqtile.config import Click, Drag, EzKey
 from libqtile.command import lazy
 
-from .settings import MOD, TERMINAL
-from .helpers import script
-from .groups import groups
+from settings import MOD, TERMINAL
+from helpers import script
+from groups import groups
 
 
 def switch_screens(target_screen):

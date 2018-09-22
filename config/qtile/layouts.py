@@ -11,7 +11,7 @@ Look at porting some Xmonad layouts to qtile:
 >>  Try cribbing from what the XmonadTall layout does:
         http://qtile.readthedocs.io/en/latest/_modules/libqtile/layout/xmonad.html#MonadTall
 '''
-from .settings import COLS, FONT_PARAMS
+from settings import COLS, FONT_PARAMS
 from libqtile import layout
 
 

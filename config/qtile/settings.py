@@ -1,6 +1,6 @@
-'''
+"""
 Settings, customisation and tweaks.
-'''
+"""
 import os
 
 
