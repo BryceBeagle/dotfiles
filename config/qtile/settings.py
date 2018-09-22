@@ -72,7 +72,7 @@ PADDING = 3
 # Keep all of the UI consistent
 FONT_PARAMS = {
     'font': FONT,
-    'fontsize': FONTSIZE,
+    'fontsize': None,
     'foreground': FOREGROUND,
 }
 

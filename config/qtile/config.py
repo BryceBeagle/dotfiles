@@ -35,10 +35,10 @@ def make_screen(systray=False):
 
     blocks = [
         # Marker for the start of the groups to give a nice bg: ◢■■■■■■■◤
-        widget.TextBox(
-            font="Arial", foreground=COLS["dark_4"],
-            text="◢", fontsize=50, padding=-5
-        ),
+        # widget.TextBox(
+        #     font="Arial", foreground=COLS["dark_4"],
+        #     text="◢", fontsize=50, padding=-5
+        # ),
         widget.GroupBox(
             other_current_screen_border=COLS["orange_0"],
             this_current_screen_border=COLS["blue_0"],
