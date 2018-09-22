@@ -123,7 +123,7 @@ def clone_dotfiles(dotfiles_address, username):
 
     print(f"Recursively changing permissions of {new_dotfiles_location} "
           "to 0o755")
-    util.recursive_chmod(new_dotfiles_location, 0o644)
+    util.recursive_chmod(git_dir, 0o644)
 
     print(f"cd-ing to {new_dotfiles_location}")
     os.chdir(new_dotfiles_location)
