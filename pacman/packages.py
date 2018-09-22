@@ -28,6 +28,7 @@ packages = [Package(
         # Desktop Environment
         "xorg-server",
         "xorg-xinit",
+        "arandr"
         "budgie-desktop",
         "arc-gtk-theme",
         ("paper-icon-theme-git", Repo.aur),
