@@ -22,7 +22,6 @@ NOTE :: Match is imported from libqtile.config
 """
 from libqtile.config import Group, ScratchPad, DropDown
 
-
 # Named Groups copied from i3
 # >>> See https://fontawesome.com/cheatsheet for more fontawesome icons
 groups = [
@@ -48,62 +47,3 @@ groups = [
                  width=0.8, height=0.8)
     ]),
 ]
-
-# Simple numbered groups
-# groups = [Group(str(x+1)) for x in range(10)]
-
-# Roman numerals + icons
-# groups = [
-#     Group("I "),
-#     Group("II "),
-#     Group("III "),
-#     Group("IV "),
-#     Group("V "),
-#     Group("VI "),
-#     Group("VII "),
-#     Group("VIII λ"),
-#     Group("IX "),
-#     Group("X "),
-# ]
-
-# Roman numerals only
-# groups = [
-#     Group("I"),
-#     Group("II"),
-#     Group("III"),
-#     Group("IV"),
-#     Group("V"),
-#     Group("VI"),
-#     Group("VII"),
-#     Group("VIII"),
-#     Group("IX"),
-#     Group("X"),
-# ]
-
-# Icons only
-# groups = [
-#     Group(""),
-#     Group(""),
-#     Group(""),
-#     Group(""),
-#     Group(""),
-#     Group(""),
-#     Group(""),
-#     Group("λ"),
-#     Group(""),
-#     Group(""),
-# ]
-
-# Named
-# groups = [
-#     Group("TERM"),
-#     Group("NOTES"),
-#     Group("DOCS"),
-#     Group("SCRATCH"),
-#     Group("COMS"),
-#     Group("WEB"),
-#     Group("CODE"),
-#     Group("REPL"),
-#     Group("MUSIC"),
-#     Group("GAMES"),
-# ]
