@@ -37,7 +37,7 @@ def make_screen(systray=False):
         # Marker for the start of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
             font="Arial", foreground=COLS["dark_4"],
-            text="◢", fontsize=50, padding=-5
+            text="◢"#, fontsize=50, padding=-5
         ),
         widget.GroupBox(
             other_current_screen_border=COLS["orange_0"],
@@ -57,7 +57,7 @@ def make_screen(systray=False):
         # Marker for the end of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
             font="Arial", foreground=COLS["dark_4"],
-            text="◤ ", fontsize=50, padding=-5
+            text="◤"#, fontsize=50, padding=-5
         ),
         # Show the title for the focused window
         widget.WindowName(**FONT_PARAMS),
