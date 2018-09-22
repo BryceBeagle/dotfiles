@@ -6,7 +6,7 @@ from libqtile.config import Key
 import subprocess
 import os
 
-from .settings import SCRIPT_DIR
+from settings import SCRIPT_DIR
 
 
 def run(cmd, with_output=False):
