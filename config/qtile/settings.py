@@ -63,7 +63,7 @@ TERMINAL = "gnome-terminal"
 # UI Config vars
 # FONT = 'Hack Regular'
 # FONT = 'Hermit medium'
-FONT = 'ProFont for Powerline Regular'
+FONT = 'Noto Sans'
 FOREGROUND = COLS['light_3']
 ALERT = COLS['red_1']
 FONTSIZE = 15
