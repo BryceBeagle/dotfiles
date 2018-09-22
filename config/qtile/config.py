@@ -85,65 +85,65 @@ def make_screen(systray=False):
         ),
         _separator(),
         # Resource usage graphs
-        widget.CPUGraph(
-            border_color=COLS["yellow_1"],
-            graph_color=COLS["yellow_1"],
-            border_width=1,
-            line_width=1,
-            type="line",
-            width=50,
-            **FONT_PARAMS
-        ),
-        widget.MemoryGraph(
-            border_color=COLS["blue_2"],
-            graph_color=COLS["blue_2"],
-            border_width=1,
-            line_width=1,
-            type="line",
-            width=50,
-            **FONT_PARAMS
-        ),
-        widget.NetGraph(
-            border_color=COLS["green_1"],
-            graph_color=COLS["green_1"],
-            border_width=1,
-            line_width=1,
-            type="line",
-            width=50,
-            **FONT_PARAMS
-        ),
-        # IP information
-        ShellScript(
-            fname="ipadr.sh",
-            update_interval=10,
-            markup=True,
-            padding=1,
-            **FONT_PARAMS
-        ),
-        # Available apt upgrades
-        ShellScript(
-            fname="aptupgrades.sh",
-            update_interval=600,
-            markup=True,
-            padding=1,
-            **FONT_PARAMS
-        ),
-        # Current battery level
-        ShellScript(
-            fname="battery.sh",
-            update_interval=60,
-            markup=True,
-            padding=1,
-            **FONT_PARAMS
-        ),
-        # Wifi strength
-        ShellScript(
-            fname="wifi-signal.sh",
-            update_interval=60,
-            markup=True,
-            padding=1,
-            **FONT_PARAMS
-        ),
+        # widget.CPUGraph(
+        #     border_color=COLS["yellow_1"],
+        #     graph_color=COLS["yellow_1"],
+        #     border_width=1,
+        #     line_width=1,
+        #     type="line",
+        #     width=50,
+        #     **FONT_PARAMS
+        # ),
+        # widget.MemoryGraph(
+        #     border_color=COLS["blue_2"],
+        #     graph_color=COLS["blue_2"],
+        #     border_width=1,
+        #     line_width=1,
+        #     type="line",
+        #     width=50,
+        #     **FONT_PARAMS
+        # ),
+        # widget.NetGraph(
+        #     border_color=COLS["green_1"],
+        #     graph_color=COLS["green_1"],
+        #     border_width=1,
+        #     line_width=1,
+        #     type="line",
+        #     width=50,
+        #     **FONT_PARAMS
+        # ),
+        # # IP information
+        # ShellScript(
+        #     fname="ipadr.sh",
+        #     update_interval=10,
+        #     markup=True,
+        #     padding=1,
+        #     **FONT_PARAMS
+        # ),
+        # # Available apt upgrades
+        # ShellScript(
+        #     fname="aptupgrades.sh",
+        #     update_interval=600,
+        #     markup=True,
+        #     padding=1,
+        #     **FONT_PARAMS
+        # ),
+        # # Current battery level
+        # ShellScript(
+        #     fname="battery.sh",
+        #     update_interval=60,
+        #     markup=True,
+        #     padding=1,
+        #     **FONT_PARAMS
+        # ),
+        # # Wifi strength
+        # ShellScript(
+        #     fname="wifi-signal.sh",
+        #     update_interval=60,
+        #     markup=True,
+        #     padding=1,
+        #     **FONT_PARAMS
+        # ),
         # Volume % : scroll mouse wheel to change volume
         widget.TextBox("", **FONT_PARAMS),
         widget.Volume(**FONT_PARAMS),
