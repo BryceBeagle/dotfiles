@@ -26,16 +26,16 @@ from libqtile.config import Group, ScratchPad, DropDown
 # Named Groups copied from i3
 # >>> See https://fontawesome.com/cheatsheet for more fontawesome icons
 groups = [
-    Group("1 "),
-    Group("2 "),
-    Group("3 "),
-    Group("4 "),
-    Group("5 "),
-    Group("6 "),
-    Group("7 "),
-    Group("8 λ"),
-    Group("9 "),
-    Group("10 "),
+    Group("1"),
+    Group("2"),
+    Group("3"),
+    Group("4"),
+    Group("5"),
+    Group("6"),
+    Group("7"),
+    Group("8"),
+    Group("9"),
+    Group("10"),
     # Scratchpads on M-- and M-S--
     ScratchPad("scratchpad", [
         # NOTE :: Need to force spawning as a new process so that
