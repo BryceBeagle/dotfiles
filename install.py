@@ -119,7 +119,7 @@ def clone_dotfiles(dotfiles_address, username):
     new_dotfiles_location = os.path.join(git_dir, "dotfiles")
 
     print(f"Changing owner of {new_dotfiles_location} to user '{username}'")
-    util.recursive_chown(new_dotfiles_location, username)
+    util.recursive_chown(git_dir, username)
 
     print(f"Recursively changing permissions of {new_dotfiles_location} "
           "to 0o755")
