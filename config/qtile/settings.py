@@ -57,8 +57,8 @@ DIRECTIONS = ("Left", "Down", "Up", "Right")
 
 # Programs
 # TERMINAL = "urxvt"
-# TERMINAL = "gnome-terminal"
-TERMINAL = "mate-terminal"
+TERMINAL = "gnome-terminal"
+# TERMINAL = "mate-terminal"
 
 # UI Config vars
 # FONT = 'Hack Regular'
