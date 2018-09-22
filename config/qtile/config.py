@@ -74,7 +74,7 @@ def make_screen(systray=False):
 
         # Volume % : scroll mouse wheel to change volume
         widget.TextBox("", **FONT_PARAMS),
-        widget.Volume(**FONT_PARAMS),
+        # widget.Volume(**FONT_PARAMS),
         _separator(),
         # Current time
         widget.Clock(
