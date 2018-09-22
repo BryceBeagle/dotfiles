@@ -92,6 +92,10 @@ def make_screen(systray=False):
         # Add in the systray and additional separator
         blocks.insert(-1, widget.Systray())
         blocks.insert(-1, _separator())
+        blocks.insert(-1, _separator())
+        blocks.insert(-1, _separator())
+        blocks.insert(-1, _separator())
+        blocks.insert(-1, _separator())
 
     return Screen(top=bar.Bar(blocks, 25, background=COLS["dark_2"]))
 
