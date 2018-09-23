@@ -12,7 +12,7 @@ from libqtile import bar, widget
 from libqtile.config import Screen, hook
 
 # Settings/helpers
-from settings import COLS, FONT_PARAMS, WITH_SYS_TRAY
+from settings import COLS, FONT_PARAMS
 from helpers import run_script
 
 # Import the parts of my config defined in other files
