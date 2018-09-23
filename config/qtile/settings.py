@@ -78,9 +78,3 @@ FONT_PARAMS = {
 
 # Location of my script files (must have a trailing slash!)
 SCRIPT_DIR = os.path.expanduser('/home/ignormies/.config/qtile/misc/')
-
-# Whether or not the primary monitor should spawn a systray
-# NOTE :: When embedding qtile inside of another desktop environment (such
-#         as mate) this should be `False` as the DE systray and qtile's
-#         end up fighting each other and both loose...!
-WITH_SYS_TRAY = True

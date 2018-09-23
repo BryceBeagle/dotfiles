@@ -27,7 +27,6 @@ def restart_on_randr(qtile, ev):
     qtile.cmd_restart()
 
 
-# ----------------------------------------------------------------------------
 def make_screen(systray=False):
     """Defined as a function so that I can duplicate this on other monitors"""
     def _separator():
@@ -94,7 +93,7 @@ def make_screen(systray=False):
 # XXX : When I run qtile inside of mate, I don"t actually want a qtile systray
 #       as mate handles that. (Plus, if it _is_ enabled then the mate and
 #       qtile trays both crap out...)
-screens = [make_screen(systray=WITH_SYS_TRAY)]
+screens = [make_screen(systray=True)]
 
 # ----------------------------------------------------------------------------
 # .: Assorted additional config :.
