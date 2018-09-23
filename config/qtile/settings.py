@@ -3,7 +3,6 @@ Settings, customisation and tweaks.
 """
 import os
 
-
 # Colour codes from gruvbox for use in the UI.
 # TODO :: Parse this out of a common shell script so that colours are
 #         automatically consistant with shell program pango as well.
@@ -47,8 +46,8 @@ COLS = {
 }
 
 # Modifier keys
-ALT = "mod1"    # Left Alt
-MOD = "mod4"    # Windows/Super
+ALT = "mod1"  # Left Alt
+MOD = "mod4"  # Windows/Super
 R_ALT = "mod3"  # Right Alt
 
 # Directions
@@ -56,9 +55,7 @@ R_ALT = "mod3"  # Right Alt
 DIRECTIONS = ("Left", "Down", "Up", "Right")
 
 # Programs
-# TERMINAL = "urxvt"
-TERMINAL = "gnome-terminal"
-# TERMINAL = "mate-terminal"
+TERMINAL = "kitty"
 
 # UI Config vars
 # FONT = 'Hack Regular'
