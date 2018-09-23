@@ -103,24 +103,25 @@ keys = [EzKey(*k) for k in [
     ("M-A-<Right>", lazy.layout.flip_right()),
 
     # .: Program Launchers :. #
-    ("M-<Return>", lazy.spawn(TERMINAL + " -e zsh")),
+    ("M-<Return>", lazy.spawn(TERMINAL)),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
 
     # Scratchpad toggles
     ("M-<slash>", lazy.group['scratchpad'].dropdown_toggle('term')),
     ("M-S-<slash>", lazy.group['scratchpad'].dropdown_toggle('ipython')),
 
-    # .: Layout / Focus Manipulation :. #
     ("M-f", lazy.window.toggle_fullscreen()),
-    # Toggle between the available layouts.
     ("M-<grave>", lazy.next_layout()),
     ("A-<grave>", lazy.prev_layout()),
+
     # Switch focus between two screens
     ("M-<bracketleft>", lazy.to_screen(0)),
     ("M-<bracketright>", lazy.to_screen(1)),
+
     # Move the focused group to one of the screens and follow it
     ("M-S-<bracketleft>", switch_screens(0), lazy.to_screen(0)),
     ("M-S-<bracketright>", switch_screens(1), lazy.to_screen(1)),
+
     # Toggle between the two most recently used groups
     # TODO :: Write my own version of this that has the same
     #         screen preserving behaviour
