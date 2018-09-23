@@ -59,9 +59,6 @@ def make_screen(systray=False):
             text="◤"
         ),
 
-        # Show the title for the focused window
-        widget.TaskList(),
-
         # Allow for quick command execution
         widget.Prompt(
             cursor_color=COLS["light_3"],
