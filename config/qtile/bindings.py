@@ -139,16 +139,14 @@ keys = [EzKey(k[0], *k[1:]) for k in [
 ]]
 
 # .: Jump between groups and also throw windows to groups :. #
-for _ix, group in enumerate(groups[:10]):
-    # Index from 1-0 instead of 0-9
-    ix = 0 if _ix == 9 else _ix + 1
+for i, group in enumerate(groups[:10], start=1):
 
     keys.extend([EzKey(k[0], *k[1:]) for k in [
         # M-ix = switch to that group
         # ("M-%d" % ix, lazy.group[group.name].toscreen()),
-        ("M-%d" % ix, focus_or_switch(group.name)),
+        (f"M-{i % 10}", focus_or_switch(group.name)),
         # M-S-ix = switch to & move focused window to that group
-        ("M-S-%d" % ix, lazy.window.togroup(group.name)),
+        (f"M-S-{i % 10}", lazy.window.togroup(group.name)),
     ]])
 
 # .: Use the mouse to drag floating layouts :. #
