@@ -89,5 +89,7 @@ packages = [Package(
         "deluge",
         "intel-ucode",
         "sudo",
+        "pulseaudio"
+        "alsa-utils"  # Brings in alsamixer
     ]
 ]
