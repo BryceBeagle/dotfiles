@@ -56,11 +56,11 @@ def make_screen(systray=False):
         # Marker for the end of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
             font="Arial", foreground=COLS["dark_4"],
-            text="◤"#, fontsize=50, padding=-5
+            text="◤"
         ),
 
         # Show the title for the focused window
-        widget.WindowName(),
+        widget.TaskList(),
 
         # Allow for quick command execution
         widget.Prompt(
