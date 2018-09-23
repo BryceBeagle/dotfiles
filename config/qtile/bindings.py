@@ -22,16 +22,17 @@ Anything bound to arrow keys is movement based. I'm having problems binding
 may be something to do with my own ez_keys function...!)
 """
 
-from libqtile.config import Click, Drag, EzKey
 from libqtile.command import lazy
+from libqtile.config import Click, Drag, EzKey
 
-from settings import MOD, TERMINAL
-from helpers import script
 from groups import groups
+from helpers import script
+from settings import MOD, TERMINAL
 
 
 def switch_screens(target_screen):
     '''Send the current group to the other screen.'''
+
     @lazy.function
     def _inner(qtile):
         current_group = qtile.screens[1 - target_screen].group
@@ -41,10 +42,11 @@ def switch_screens(target_screen):
 
 
 def focus_or_switch(group_name):
-    '''
+    """
     Focus the selected group on the current screen or switch to the other
     screen if the group is currently active there
-    '''
+    """
+
     @lazy.function
     def _inner(qtile):
         # Check what groups are currently active
@@ -63,7 +65,7 @@ def focus_or_switch(group_name):
 
 # qtile actually has an emacs style `EzKey` helper that makes specifying
 # key bindings a lot nicer than the default.
-keys = [EzKey(k[0], *k[1:]) for k in [
+keys = [EzKey(*k) for k in [
     # .: Movement :.
     # Swtich focus between panes
     ("M-<Up>", lazy.layout.up()),
@@ -133,14 +135,10 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-A-r", lazy.restart()),
     # Shut down qtile.
     ("M-A-<Escape>", lazy.shutdown()),
-    ("M-A-l", lazy.spawn("lock-screen")),
-    ("M-A-s", lazy.spawn("screenshot")),
-    ("M-A-<Delete>", lazy.spawn(script("power-menu.sh"))),
 ]]
 
-# .: Jump between groups and also throw windows to groups :. #
+# Jump between groups and also throw windows to groups
 for i, group in enumerate(groups[:10], start=1):
-
     keys.extend([EzKey(k[0], *k[1:]) for k in [
         # M-ix = switch to that group
         # ("M-%d" % ix, lazy.group[group.name].toscreen()),
