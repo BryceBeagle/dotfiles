@@ -143,6 +143,8 @@ def git_get_remote_url(file_in_clone):
         ["git", "config", "--get", "remote.origin.url"]
     ).decode().strip()
 
+    remote_url = f"git@{remote_url.split('https://')[-1]}.git"
+
     os.chdir(prev_cwd)
 
     return remote_url

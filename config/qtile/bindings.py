@@ -26,7 +26,6 @@ from libqtile.command import lazy
 from libqtile.config import Click, Drag, EzKey
 
 from groups import groups
-from helpers import script
 from settings import MOD, TERMINAL
 
 
