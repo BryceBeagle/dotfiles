@@ -17,7 +17,7 @@ from helpers import run_script
 
 # Import the parts of my config defined in other files
 from layouts import layouts, floating_layout    # NOQA
-from bindings import keys, mouse                # NOQA
+import bindings
 from groups import groups                       # NOQA
 
 
@@ -70,7 +70,7 @@ def make_screen(systray=False):
 
         _separator(),
 
-        # Volume % : scroll mouse wheel to change volume
+        widget.Battery(),
         widget.Volume(emoji=True),
         _separator(),
 
@@ -79,8 +79,7 @@ def make_screen(systray=False):
 
         # Visual indicator of the current layout for this workspace.
         widget.CurrentLayoutIcon(
-            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-            **FONT_PARAMS
+            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")]
         ),
     ]
 
@@ -98,7 +97,7 @@ def make_screen(systray=False):
 screens = [make_screen(systray=True)]
 
 # ----------------------------------------------------------------------------
-# .: Assorted additional config :.
+# .: Assorted additional config :
 focus_on_window_activation = "smart"
 dgroups_key_binder = None
 follow_mouse_focus = True
@@ -107,6 +106,8 @@ auto_fullscreen = True
 dgroups_app_rules = []
 cursor_warp = True
 # main = None
+keys = bindings.keys
+mouse = bindings.mouse
 
 # XXX :: Horrible hack needed to make grumpy java apps work correctly.
 #        (This is from the default config)
