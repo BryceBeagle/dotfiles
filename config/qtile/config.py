@@ -33,7 +33,7 @@ def make_screen(systray=False):
         # Marker for the start of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
             font="Arial", foreground=COLS["dark_4"],
-            text="◢"#, fontsize=50, padding=-5
+            text="◢"
         ),
         widget.GroupBox(
             other_current_screen_border=COLS["orange_0"],
@@ -78,7 +78,6 @@ def make_screen(systray=False):
     if systray:
         # Add in the systray and additional separator
         blocks.insert(-1, widget.Systray())
-        blocks.insert(-1, _separator())
 
     return Screen(top=bar.Bar(blocks, 25, background=COLS["dark_2"]))
 
