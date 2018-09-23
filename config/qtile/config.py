@@ -75,11 +75,10 @@ def make_screen(systray=False):
         # Volume % : scroll mouse wheel to change volume
         widget.Volume(emoji=True),
         _separator(),
+
         # Current time
-        widget.Clock(
-            format="%Y-%m-%d %a %I:%M %p",
-            **FONT_PARAMS
-        ),
+        widget.Clock(format="%H:%M"),
+
         # Visual indicator of the current layout for this workspace.
         widget.CurrentLayoutIcon(
             custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
