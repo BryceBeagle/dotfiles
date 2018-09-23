@@ -58,6 +58,8 @@ def make_screen(systray=False):
             text="◤"
         ),
 
+        widget.Spacer(),
+
         # Allow for quick command execution
         widget.Prompt(
             cursor_color=COLS["light_3"],
