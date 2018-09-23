@@ -70,7 +70,7 @@ def make_screen(systray=False):
 
         _separator(),
 
-        widget.Battery(),
+        widget.BatteryIcon(),
         widget.Volume(emoji=True),
         _separator(),
 
