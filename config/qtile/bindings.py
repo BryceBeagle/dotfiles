@@ -102,23 +102,7 @@ keys = [EzKey(k[0], *k[1:]) for k in [
 
     # .: Program Launchers :. #
     ("M-<Return>", lazy.spawn(TERMINAL + " -e zsh")),
-    ("M-<semicolon>", lazy.spawn('rofi-apps')),
-    ("M-c", lazy.spawn(script("calendar.sh"))),
-    ("M-n", lazy.spawn('rofi-wifi-menu')),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
-    ("M-t", lazy.spawn(script("show-todo.sh"))),
-    ("M-w", lazy.spawn('rofi -show window')),
-    ("M-C-c", lazy.spawn("google-chrome-stable")),
-    ("M-C-e", lazy.spawn("emacs")),
-    ("M-C-f", lazy.spawn("firefox")),
-    ("M-C-i", lazy.spawn("python3 -m qtconsole")),
-    ("M-C-S-i", lazy.spawn("python3.6 -m qtconsole")),
-    ("M-C-p", lazy.spawn("peek")),
-    ("M-C-r", lazy.spawn(TERMINAL + ' -e "ranger"')),
-    ("M-C-v", lazy.spawn(TERMINAL + ' -e "vim"')),
-    ("M-C-h", lazy.spawn(TERMINAL + ' -e "htop"')),
-    ("M-C-w", lazy.spawn(TERMINAL + ' -e "weechat"')),
-    ("M-C-t", lazy.spawn("thunar")),
 
     # Scratchpad toggles
     ("M-<slash>", lazy.group['scratchpad'].dropdown_toggle('term')),
