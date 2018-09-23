@@ -79,7 +79,7 @@ def make_screen(systray=False):
 
         # Visual indicator of the current layout for this workspace.
         widget.CurrentLayoutIcon(
-            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")]
+            # custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")]
         ),
     ]
 
