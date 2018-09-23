@@ -29,9 +29,6 @@ def restart_on_randr(qtile, ev):
 
 def make_screen(systray=False):
     """Defined as a function so that I can duplicate this on other monitors"""
-    def _separator():
-        return widget.Sep(linewidth=2, foreground=COLS["dark_3"])
-
     blocks = [
         # Marker for the start of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
@@ -68,19 +65,14 @@ def make_screen(systray=False):
             prompt="λ : "
         ),
 
-        _separator(),
-
         widget.BatteryIcon(),
         widget.Volume(emoji=True),
-        _separator(),
 
         # Current time
         widget.Clock(format="%H:%M"),
 
         # Visual indicator of the current layout for this workspace.
-        widget.CurrentLayoutIcon(
-            # custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")]
-        ),
+        widget.CurrentLayoutIcon(),
     ]
 
     if systray:
