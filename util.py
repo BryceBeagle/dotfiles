@@ -148,8 +148,8 @@ def git_get_remote_url(file_in_clone):
         ["git", "config", "--get", "remote.origin.url"]
     ).decode().strip()
 
-    username = input("GitHub username to clone dotfiles repo using SSH: ")
-
+    # username = input("GitHub username to clone dotfiles repo using SSH: ")
+    #
     # remote_url = f"git@github.com:{username}{remote_url.split('/')[-1]}.git"
     #
     # os.chdir(prev_cwd)
