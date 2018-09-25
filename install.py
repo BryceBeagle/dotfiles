@@ -5,7 +5,6 @@ import os
 import sys
 
 import boot
-import config
 import egpu
 import fstab
 import kernel_modules
@@ -158,6 +157,9 @@ if __name__ == '__main__':
 
     # Set up pacman hooks
     pacman.setup()
+
+    # Install python
+    pacman.pacman.install_packages(["python"])
 
     fstab.setup()
     egpu.setup()
