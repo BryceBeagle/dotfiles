@@ -3,7 +3,7 @@ import util
 
 def setup():
 
-    # Symlink all qtile files
+    print("Symlink all qtile files")
     util.symlink("qtile/config.py", "~/.config/qtile/")
     util.symlink("qtile/bindings.py", "~/.config/qtile/")
     util.symlink("qtile/groups.py", "~/.config/qtile/")
