@@ -156,9 +156,9 @@ if __name__ == '__main__':
     # Clone dotfiles repo to user dir
     clone_dotfiles(dotfiles_remote_url, username)
 
-    # Set up environment
-    pacman.setup(username)
-    config.setup(username)
+    # Set up pacman hooks
+    pacman.setup()
+
     fstab.setup()
     egpu.setup()
     kernel_modules.setup()

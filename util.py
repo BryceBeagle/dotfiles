@@ -24,6 +24,11 @@ def remove(path):
 
 
 def symlink(real, link, *, link_is_dir=True, root_own=False):
+
+    # Expand user paths
+    real = os.path.expanduser(real)
+    link = os.path.expanduser(link)
+
     # Add name of real file to link if link is merely a directory
     if link_is_dir:
         link = os.path.join(link, os.path.basename(real))
@@ -170,3 +175,9 @@ def git_clone_repo(remote_url, dst=None):
 
 def recv_gpg_keys(username: str, keys: List[str]):
     run(["sudo", "-u", username, "gpg", "--recv-keys"] + keys)
+
+
+def add_root(command: List[str]):
+    if os.geteuid != 0:
+        command.insert(0, "sudo")
+    return command

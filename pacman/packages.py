@@ -87,8 +87,6 @@ packages = [Package(
         "sl",
         "gparted",
         "deluge",
-        "intel-ucode",
-        "sudo",
         "pulseaudio"
         "alsa-utils"  # Brings in alsamixer
     ]

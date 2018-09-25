@@ -7,13 +7,15 @@ from boot import boot
 from pacman.packages import packages, Package, Repo
 
 
-def setup(username):
+def setup():
     print("Symlinking paccache hooks to /etc/pacman.d/")
     util.symlink("pacman/paccache-remove.hook", "/etc/pacman.d/hooks/",
                  root_own=True)
     util.symlink("pacman/paccache-upgrade.hook", "/etc/pacman.d/hooks/",
                  root_own=True)
 
+
+def setup_environment(official=True, aur=False):
     official_packages = [pkg for pkg in packages if pkg.repo is Repo.official]
     aur_packages = [pkg for pkg in packages if pkg.repo is Repo.aur]
     multilib_packages = [pkg for pkg in packages if pkg.repo is Repo.multilib]
@@ -24,21 +26,17 @@ def setup(username):
     print("Updating packages")
     update()
 
-    # Remove ucode file if installing ucode package
-    # Not doing this will cause pacman to error out
-    if any(pkg.name == "intel-ucode" for pkg in official_packages):
-        ucode_path = "/boot/intel-ucode.img"
-        if os.path.exists(ucode_path):
-            os.remove(ucode_path)
+    if official:
+        print("Installing official repo packages")
+        install_packages(official_packages)
 
-    print("Installing official repo packages")
-    install_packages(official_packages)
+    if aur:
+        print("Installing yay")
+        install_yay()
 
-    print("Installing yay")
-    install_yay(username)
-    if aur_packages:
-        print("Installing AUR packages")
-        install_aur_packages(aur_packages, username)
+        if aur_packages:
+            print("Installing AUR packages")
+            install_aur_packages(aur_packages)
 
     if multilib_packages:
         print("Enabling multilib")
@@ -55,7 +53,7 @@ def pacstrap():
 
 def update():
     """Update packages"""
-    util.run(["pacman", "-Syu"])
+    util.run(util.add_root(["pacman", "-Syu"]))
 
 
 def install_packages(pkgs: List[Union[str, Package]]):
@@ -64,10 +62,10 @@ def install_packages(pkgs: List[Union[str, Package]]):
     if isinstance(pkgs, list):
         pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
-    util.run(["pacman", "-S", "--noconfirm", "--needed"] + pkgs)
+    util.run(util.add_root(["pacman", "-S", "--noconfirm", "--needed"]) + pkgs)
 
 
-def install_yay(username):
+def install_yay():
     # Dependencies for the command
     install_packages(["git", "binutils"])
 
@@ -78,13 +76,13 @@ def install_yay(username):
 
     # Clone repository
     git_url = f"https://aur.archlinux.org/yay.git"
-    util.run(["sudo", "-u", username, "git", "clone", git_url])
+    util.run(["git", "clone", git_url])
 
     # cd into cloned repo
     os.chdir("yay")
 
     # Install package
-    util.run(["sudo", "-u", username, "makepkg", "-si", "--noconfirm"])
+    util.run(["makepkg", "-si", "--noconfirm"])
 
     # Restore original working directory
     os.chdir(working_dir)
@@ -95,7 +93,7 @@ def install_aur_packages(pkgs: List[Union[str, Package]], username):
     try:
         util.run(["pacman", "-Qi", "yay"])
     except subprocess.CalledProcessError:
-        install_yay(username)
+        install_yay()
 
     print("Installing gpg keys if necessary")
     for pkg in pkgs:
@@ -109,8 +107,7 @@ def install_aur_packages(pkgs: List[Union[str, Package]], username):
     if isinstance(pkgs, list):
         pkgs = [pkg.name if isinstance(pkg, Package) else pkg for pkg in pkgs]
 
-    util.run(["sudo", "-u", username,
-              "yay",
+    util.run(["yay",
               "--pgpfetch", "--sudoloop", "--noconfirm",
               "--answerclean", "N",
               "--answerdiff", "N",
@@ -122,4 +119,4 @@ def enable_multilib():
     # Uncomment multilib section in /etc/pacman.conf
     conf_file = "/etc/pacman.conf"
     replace_str = "s/#[multilib]/[multilib]"
-    util.run(["sed", "-i", replace_str, conf_file])
+    util.run(util.add_root(["sed", "-i", replace_str, conf_file]))

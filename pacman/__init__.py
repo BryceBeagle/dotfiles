@@ -1,1 +1,1 @@
-from .pacman import pacstrap, setup
+from .pacman import pacstrap, setup, setup_environment

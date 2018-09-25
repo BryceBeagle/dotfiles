@@ -1,10 +1,6 @@
 import util
 
 
-def setup(username):
-    print(
-        f"Symlinking 10-emoji.conf to "
-        f"/home/{username}/.config/fontconfig/conf.d/")
-    util.symlink(
-        "config/fonts/10-emoji.conf",
-        f"/home/{username}/.config/fontconfig/conf.d/")
+def setup():
+    print(f"Symlinking 10-emoji.conf to ~/.config/fontconfig/conf.d/")
+    util.symlink("config/fonts/10-emoji.conf", "~/.config/fontconfig/conf.d/")

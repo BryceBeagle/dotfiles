@@ -2,6 +2,7 @@ import os
 import shutil
 
 import util
+from pacman import pacman
 
 
 def ensure_boot_mounted():
@@ -40,6 +41,14 @@ def mkinitcpio(install_dir):
 def setup(partition_label, conf_name="arch", default=True):
 
     ensure_boot_mounted()
+
+    # Remove ucode file if installing ucode package
+    # Not doing this will cause pacman to error out
+    ucode_path = "/boot/intel-ucode.img"
+    if os.path.exists(ucode_path):
+        os.remove(ucode_path)
+
+    pacman.install_packages(["intel-ucode"])
 
     # install_dir = f"installs/{conf_name}/"
     install_dir = ""  # install to root of boot for now

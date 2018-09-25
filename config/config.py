@@ -7,11 +7,11 @@ from . import xdg
 from . import zsh
 
 
-def setup(username):
-    x.setup(username)
-    nvim.setup(username)
-    xdg.setup(username)
-    bash.setup(username)
-    zsh.setup(username)
-    ssh.setup(username)
-    fonts.setup(username)
+def setup():
+    x.setup()
+    nvim.setup()
+    xdg.setup()
+    bash.setup()
+    zsh.setup()
+    ssh.setup()
+    fonts.setup()
