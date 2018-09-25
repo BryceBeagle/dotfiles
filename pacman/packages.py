@@ -87,6 +87,8 @@ packages = [Package(
         "gparted",
         "deluge",
         "pulseaudio",
-        "alsa-utils"  # Brings in alsamixer
+        "alsa-utils",  # Brings in alsamixer
+        "mlocate",
+
     ]
 ]
