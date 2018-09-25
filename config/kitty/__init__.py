@@ -1,0 +1,1 @@
+from .kitty import setup
