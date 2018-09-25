@@ -1,4 +1,4 @@
-'''
+"""
 My group/workspace layouts.
 
 The built in layouts can be found here:
@@ -10,8 +10,8 @@ Look at porting some Xmonad layouts to qtile:
 
 >>  Try cribbing from what the XmonadTall layout does:
         http://qtile.readthedocs.io/en/latest/_modules/libqtile/layout/xmonad.html#MonadTall
-'''
-from settings import COLS, FONT_PARAMS
+"""
+from settings import COLS
 from libqtile import layout
 
 
@@ -44,38 +44,7 @@ layouts = [
         border_width=BORDER_WIDTH,
         margin=MARGIN,
         ratio=0.7,
-    ),
-    # XXX : Emulating BSPWM (but not matching it)
-    layout.Bsp(
-        border_normal=BORDER_NORMAL,
-        border_focus=BORDER_FOCUS,
-        border_width=BORDER_WIDTH,
-        margin=MARGIN,
-        fair=False,
-    ),
-    # XXX : Emulates the tiling style of Wmii. By default, windows open and
-    #       split the screen horizontally as part of a single column. Moving
-    #       a window left/right will create a new column which can be split
-    #       again.
-    layout.Wmii(
-        border_normal=BORDER_NORMAL,
-        border_focus=BORDER_FOCUS,
-        border_width=BORDER_WIDTH,
-        margin=MARGIN,
-    ),
-    # XXX : Good for browser style flipping between windows when working on
-    #       large coding projects (beats constant buffer/tab swaps in Vim!)
-    layout.TreeTab(
-        inactive_fg=COLS["light_0"],
-        inactive_bg=BORDER_NORMAL,
-        active_bg=COLS["light_3"],
-        active_fg=BORDER_NORMAL,
-        sections=["    .: Windows :."],
-        # Want a consistant font w. the terminal here
-        foreground=FONT_PARAMS["foreground"],
-        fontsize=FONT_PARAMS["fontsize"],
-        font="ProFontWindows Nerd Font Mono Book",
-    ),
+    )
 ]
 
 # Specification for auto floating windows: this isn't a layout in the same
