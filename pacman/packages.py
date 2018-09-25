@@ -28,8 +28,8 @@ packages = [Package(
         # Desktop Environment
         "xorg-server",
         "xorg-xinit",
-        "arandr"
-        "budgie-desktop",
+        "arandr",
+        "qtile",
         "arc-gtk-theme",
         ("paper-icon-theme-git", Repo.aur),
 
@@ -82,7 +82,6 @@ packages = [Package(
         # Other
         "pacman-contrib",  # Brings in paccache
         ("eagle", Repo.aur),
-        "arandr",
         "vlc",
         "sl",
         "gparted",
