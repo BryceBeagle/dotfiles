@@ -20,7 +20,6 @@ from libqtile import layout
 # layouts, so they are defined here and used where possible to give a
 # consistent UI.
 BORDER_NORMAL = COLS["dark_2"]
-# BORDER_FOCUS = COLS["blue_2"]
 BORDER_FOCUS = COLS["red_1"]
 BORDER_WIDTH = 3
 MARGIN = 12
