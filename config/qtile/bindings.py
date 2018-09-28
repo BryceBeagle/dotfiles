@@ -73,35 +73,29 @@ keys = [EzKey(*k) for k in [
     ("M-<Right>", lazy.layout.right()),
 
     # Swap panes: target relative to active.
-    # NOTE :: The `swap` commands are for XMonad
     ("M-S-<Up>", lazy.layout.shuffle_up()),
     ("M-S-<Down>", lazy.layout.shuffle_down()),
     ("M-S-<Left>", lazy.layout.shuffle_left(), lazy.layout.swap_left()),
     ("M-S-<Right>", lazy.layout.shuffle_right(), lazy.layout.swap_right()),
 
     # Grow/shrink the main the focused window
-    # NOTE :: grow/shrink for XMonadTall, grow_X for Wmii/BSP
     ("M-C-<Up>", lazy.layout.grow_up()),
     ("M-C-<Down>", lazy.layout.grow_down()),
     ("M-C-<Left>", lazy.layout.grow_left()),
     ("M-C-<Right>", lazy.layout.grow_right()),
 
-    # .: Xmonad :. #
-    # ("M-<slash>", lazy.layout.maximize()),
-    # ("M-S-<slash>", lazy.layout.normalize()),
     # Swap the position of the master/child panes
     ("M-<backslash>", lazy.layout.flip()),
     ("M-<minus>", lazy.layout.shrink()),
     ("M-<equal>", lazy.layout.grow()),
 
-    # .: BSP :. #
-    ("M-<period>", lazy.layout.toggle_split()),
-    ("M-A-<Up>", lazy.layout.flip_up()),
-    ("M-A-<Down>", lazy.layout.flip_down()),
-    ("M-A-<Left>", lazy.layout.flip_left()),
-    ("M-A-<Right>", lazy.layout.flip_right()),
+    # Float/defloat window
+    ("M-<Insert>", lazy.window.toggle_floating()),
 
-    # .: Program Launchers :. #
+    # Kill program
+    ("A-<F4>", lazy.window.kill()),
+
+    # Program Launchers
     ("M-<Return>", lazy.spawn(TERMINAL)),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
 
@@ -111,23 +105,15 @@ keys = [EzKey(*k) for k in [
 
     ("M-f", lazy.window.toggle_fullscreen()),
     ("M-<grave>", lazy.next_layout()),
-    ("A-<grave>", lazy.prev_layout()),
+    ("M-S-<grave>", lazy.prev_layout()),
 
-    # Switch focus between two screens
-    ("M-<bracketleft>", lazy.to_screen(0)),
-    ("M-<bracketright>", lazy.to_screen(1)),
-
-    # Move the focused group to one of the screens and follow it
-    ("M-S-<bracketleft>", switch_screens(0), lazy.to_screen(0)),
-    ("M-S-<bracketright>", switch_screens(1), lazy.to_screen(1)),
-
-    # Toggle between the two most recently used groups
-    # TODO :: Write my own version of this that has the same
-    #         screen preserving behaviour
-    ("M-<Tab>", lazy.screen.toggle_group()),
-    # Close the current window: NO WARNING!
-    ("M-S-q", lazy.window.kill()),
-    ("M-S-<BackSpace>", lazy.window.kill()),
+    # # Switch focus between two screens
+    # ("M-<bracketleft>", lazy.to_screen(0)),
+    # ("M-<bracketright>", lazy.to_screen(1)),
+    #
+    # # Move the focused group to one of the screens and follow it
+    # ("M-S-<bracketleft>", switch_screens(0), lazy.to_screen(0)),
+    # ("M-S-<bracketright>", switch_screens(1), lazy.to_screen(1)),
 
     # .: Sys + Utils :. #
     # Restart qtile in place and pull in config changes (check config before
@@ -156,3 +142,4 @@ mouse = [
          start=lazy.window.get_size()),
     Click([MOD], "Button2", lazy.window.bring_to_front())
 ]
+# scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
