@@ -1,1 +1,2 @@
-exec qtile
+exec qtile > /tmp/qtile.log
+
