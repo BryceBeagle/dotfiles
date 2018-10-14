@@ -12,10 +12,9 @@ from libqtile.config import Screen, hook
 
 # Import the parts of my config defined in other files
 import bindings
-import widgets
-import layouts as layouts_
 import groups as groups_
-
+import layouts as layouts_
+import widgets
 # Settings/helpers
 from settings import COLS
 
@@ -66,11 +65,9 @@ def make_screen():
         ),
 
         qtile_widget.BatteryIcon(),
-        widgets.UsefulVolumeWidget(
-            button_up="XF86ScrollUp",
-            button_down="XF86ScrollDown",
-            button_mute="XF86ScrollClick",
-            emoji=True),
+        widgets.UsefulVolumeWidget(volume_app="pavucontrol",
+                                   step=5,
+                                   emoji=True),
 
         # Current time
         qtile_widget.Clock(format="%H:%M"),

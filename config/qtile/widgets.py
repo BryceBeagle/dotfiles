@@ -4,7 +4,6 @@ from libqtile.widget import volume
 
 
 class UsefulVolumeWidget(volume.Volume):
-
     def __init__(
             self, *,
             button_up=volume.BUTTON_UP,
@@ -65,5 +64,3 @@ class UsefulVolumeWidget(volume.Volume):
     def cmd_run_app(self):
         # Emulate button press.
         self.button_press(0, 0, self.button_right)
-
-
