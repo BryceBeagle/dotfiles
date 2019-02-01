@@ -1,7 +1,6 @@
 # <file system> <dir>		<type>	<options>						<dump>	<pass>
-LABEL=arch      /		ext4	rw,relatime,data=ordered				0	1
-LABEL=BOOT	/boot		vfat	defaults						0	2
+LABEL=arch	/		ext4	rw,relatime,data=ordered				0	1
+LABEL=BOOT	/mnt/boot	vfat	defaults						0	2
+/mnt/boot/arch  /boot		none	defaults,bind						0	2
 LABEL=home	/home		ext4	defaults						0	2
 
-LABEL=LunchBox	/mnt/LunchBox	ntfs	rw,relatime,auto,nofail,x-systemd.device-timeout=1	0	2
-LABEL=BreadBox	/mnt/BreadBox	ntfs	rw,relatime,auto,nofail,x-systemd.device-timeout=1	0	2
