@@ -57,6 +57,9 @@ chpwd() {
     ls --color=auto
 }
 
+# Disable auto cd
+unsetopt AUTO_CD
+
 # Default editor
 export EDITOR='nvim'
 
@@ -64,4 +67,3 @@ export EDITOR='nvim'
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 source /usr/bin/virtualenvwrapper.sh
-
