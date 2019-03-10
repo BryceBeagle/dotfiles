@@ -8,15 +8,17 @@ There are probably some more good hooks to make use of in here:
 
 # qtile internals
 from libqtile import bar, widget as qtile_widget
-from libqtile.config import Screen, hook
+from libqtile.config import hook, Screen
 
 # Import the parts of my config defined in other files
 import bindings
 import groups as groups_
 import layouts as layouts_
 import widgets
+# from screen import IgnormiesBar
 # Settings/helpers
 from settings import COLS
+from style import Fonts, Colors
 
 
 @hook.subscribe.screen_change
@@ -63,7 +65,7 @@ def make_screen():
             bell_style="visual",
             prompt="λ : "
         ),
-
+        qtile_widget.Systray(),
         qtile_widget.BatteryIcon(),
         widgets.UsefulVolumeWidget(volume_app="pavucontrol",
                                    step=5,
@@ -71,12 +73,19 @@ def make_screen():
 
         # Current time
         qtile_widget.Clock(format="%H:%M"),
-
         # Visual indicator of the current layout for this workspace.
         qtile_widget.CurrentLayoutIcon(),
     ]
 
-    return Screen(top=bar.Bar(blocks, 25, background=COLS["dark_2"]))
+    # bottom = IgnormiesBar(25)
+    # bottom.add_widget(qtile_widget.TextBox(
+    #     font=Fonts.DEFAULT, foreground=Colors.GROUP_BACKGROUND,
+    #     text="◢"
+    # ))
+
+    return Screen(top=bar.Bar(blocks, 25, background=COLS["dark_2"])) # ,
+                 # bottom=bottom)
+    # return IgnormiesScreen()
 
 
 # XXX : When I run qtile inside of mate, I don"t actually want a qtile systray
@@ -92,7 +101,7 @@ follow_mouse_focus = True
 bring_front_click = False
 auto_fullscreen = True
 dgroups_app_rules = []
-cursor_warp = True
+cursor_warp = False
 
 keys = bindings.keys
 mouse = bindings.mouse
