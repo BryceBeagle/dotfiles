@@ -26,7 +26,7 @@ from libqtile.command import lazy
 from libqtile.config import Click, Drag, EzKey
 
 from groups import groups
-from settings import MOD, TERMINAL
+from settings import MOD, TERMINAL, FILE_MANAGER
 
 
 def switch_screens(target_screen):
@@ -98,6 +98,7 @@ keys = [EzKey(*k) for k in [
     # Program Launchers
     ("M-<Return>", lazy.spawn(TERMINAL)),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
+    ("M-e", lazy.spawn(FILE_MANAGER)),
 
     # Scratchpad toggles
     ("M-<slash>", lazy.group['scratchpad'].dropdown_toggle('term')),
