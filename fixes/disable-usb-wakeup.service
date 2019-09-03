@@ -1,0 +1,11 @@
+# https://bbs.archlinux.org/viewtopic.php?pid=1575617#p1575617
+
+[Unit]
+Description=Disable USB wakeup triggers in /proc/acpi/wakeup
+
+[Service]
+Type=oneshot
+ExecStart=/etc/systemd/scripts/disable-usb-wakeup.sh
+
+[Install]
+WantedBy=multi-user.target 

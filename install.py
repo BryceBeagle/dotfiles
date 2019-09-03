@@ -6,6 +6,7 @@ import sys
 
 import boot
 import egpu
+import fixes
 import fstab
 import kernel_modules
 import pacman
@@ -170,3 +171,7 @@ if __name__ == '__main__':
 
     # Enable services
     services.setup()
+
+    # Perform some fixes
+    fixes.setup()
+
