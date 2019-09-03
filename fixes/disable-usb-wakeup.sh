@@ -1,6 +1,6 @@
-# https://bbs.archlinux.org/viewtopic.php?pid=1625398#p1625398
-
 #! /usr/bin/sh
+
+# https://bbs.archlinux.org/viewtopic.php?pid=1625398#p1625398
 # Add your candidates below but make sure that no pattern matches more than one device in /proc/acpi/wakeup
 CANDIDATES="XHC"
 for ACPIDEV in $CANDIDATES; do

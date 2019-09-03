@@ -8,3 +8,6 @@ def setup():
     print("Symlinking helper script for service to /etc/systemd/scripts/")
     util.symlink("fixes/disable-usb-wakeup.sh", "/etc/systemd/scripts",
                  root_own=True)
+
+    util.run(["systemctl", "enable", "--now", "disable-usb-wakeup"])
+
